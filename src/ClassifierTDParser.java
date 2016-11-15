@@ -1,7 +1,7 @@
 import java.io.File;
 import java.util.ArrayList;
 
-public class ClassifierTDParser extends TrainingDataParser<ArrayList<Float>,ArrayList<Boolean>>{
+public class ClassifierTDParser extends FileParser<TrainingExample<ArrayList<Float>,ArrayList<Boolean>>>{
 	
 	TrainingExample<ArrayList<Float>, ArrayList<Boolean>> example;
 	ArrayList<Float> attributeSet;

@@ -6,6 +6,6 @@ public abstract class TrainingData<P,C> extends File{
 		super(filePath);
 	}
 	
-	public abstract TrainingDataParser<P,C> getParser();
+	public abstract FileParser<TrainingExample<P,C>> getParser();
 
 }

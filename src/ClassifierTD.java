@@ -7,7 +7,7 @@ public class ClassifierTD extends TrainingData<ArrayList<Float>,ArrayList<Boolea
 	}
 
 	@Override
-	public TrainingDataParser<ArrayList<Float>,ArrayList<Boolean>> getParser() {
+	public FileParser<TrainingExample<ArrayList<Float>,ArrayList<Boolean>>> getParser() {
 		return new ClassifierTDParser(this);
 	}
 
