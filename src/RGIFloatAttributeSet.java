@@ -1,5 +1,11 @@
 import java.util.ArrayList;
 
+import Inquiry.EqualsInquiry;
+import Inquiry.GreaterThanInquiry;
+import Inquiry.IndexInquiry;
+import Inquiry.Inquiry;
+import Inquiry.SmallerThanInquiry;
+
 public class RGIFloatAttributeSet extends RGInquiry<ArrayList<Float>>{	//fix the mess from ArrayList being newly added
 	
 	private final int NUM_INQUIRY_TYPES = 3;

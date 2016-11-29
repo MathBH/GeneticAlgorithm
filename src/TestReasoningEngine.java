@@ -8,6 +8,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import Inquiry.EqualsInquiry;
+import Inquiry.IndexInquiry;
+
 public class TestReasoningEngine {
 
 	static ReasoningEngine<ArrayList<String>,Boolean> brain1;

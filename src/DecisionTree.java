@@ -1,3 +1,4 @@
+import Inquiry.Inquiry;
 
 public class DecisionTree<P,C>{
 	private C conclusion;

@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import Inquiry.Inquiry;
+
 public class RGDecisionTree<P,C> extends RandomGenerator<DecisionTree<P,C>>{
 
 	private final int DEFAULT_LEAF_CAP = 64;

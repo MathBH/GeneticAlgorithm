@@ -1,6 +1,6 @@
-import static org.junit.Assert.*;
+package ioExtended;
 
-import java.util.ArrayList;
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -8,9 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import Inquiry.Inquiry;
-
-public class TestRGIFloatAttributeSet {
+public class TestFileInquirer {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -30,12 +28,10 @@ public class TestRGIFloatAttributeSet {
 
 	@Test
 	public void test() {
-		RGIFloatAttributeSet rgifas = new RGIFloatAttributeSet(7);
+		FileInquirer inquirer = new FileInquirer(new FileInquirerView());
+		FileInquirerController controller = new FileInquirerController(inquirer);
 		
-		for (int i = 0; i < 100; i++){
-			Inquiry attributeSetInquiry = rgifas.randomGenerate();
-			System.out.println(attributeSetInquiry);
-		}
+		controller.requestFile();
 	}
 
 }

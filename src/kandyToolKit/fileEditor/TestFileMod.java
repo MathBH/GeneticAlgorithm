@@ -1,6 +1,6 @@
-import static org.junit.Assert.*;
+package kandyToolKit.fileEditor;
 
-import java.util.ArrayList;
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -8,9 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import Inquiry.Inquiry;
-
-public class TestRGIFloatAttributeSet {
+public class TestFileMod {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -30,12 +28,7 @@ public class TestRGIFloatAttributeSet {
 
 	@Test
 	public void test() {
-		RGIFloatAttributeSet rgifas = new RGIFloatAttributeSet(7);
-		
-		for (int i = 0; i < 100; i++){
-			Inquiry attributeSetInquiry = rgifas.randomGenerate();
-			System.out.println(attributeSetInquiry);
-		}
+		fail("Not yet implemented");
 	}
 
 }
