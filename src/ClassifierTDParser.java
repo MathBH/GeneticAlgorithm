@@ -1,8 +1,14 @@
 import java.io.File;
 import java.util.ArrayList;
 
-public class ClassifierTDParser extends FileParser<TrainingExample<ArrayList<Float>,ArrayList<Boolean>>>{
-	
+/**
+ * dunno what this is either
+ * @author Jen
+ *
+ */
+
+public class ClassifierTDParser/* extends FileParser<TrainingExample<ArrayList<Float>,ArrayList<Boolean>>>*/{
+	/*
 	TrainingExample<ArrayList<Float>, ArrayList<Boolean>> example;
 	ArrayList<Float> attributeSet;
 	ArrayList<Boolean> classificationSet;
@@ -95,5 +101,6 @@ public class ClassifierTDParser extends FileParser<TrainingExample<ArrayList<Flo
 			e.printStackTrace();
 		}
 	}
+	*/
 
 }

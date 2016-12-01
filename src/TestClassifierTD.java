@@ -1,4 +1,7 @@
 import static org.junit.Assert.*;
+/**
+ * not sure what this is
+ */
 
 import java.util.ArrayList;
 
@@ -28,16 +31,17 @@ public class TestClassifierTD {
 
 	@Test
 	public void test() {
-		ClassifierTD trainingData = new ClassifierTD("sample.training.classifier");
+		/*
+		ClassifierEX trainingData = new ClassifierEX("sample.training.classifier");
 		ClassifierTDParser parser = (ClassifierTDParser) trainingData.getParser();
 		
-		TrainingExample<ArrayList<Float>,ArrayList<Boolean>> example;
+		Example<ArrayList<Float>,ArrayList<Boolean>> example;
 		
 		while (parser.read()){
 			example = parser.getElement();
 			System.out.print(example.getPremise());
 			System.out.println(example.getConclusion());
-		}
+		}*/
 	}
 
 }
