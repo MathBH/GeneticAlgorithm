@@ -139,7 +139,7 @@ public class ClassifierIncubator implements REIncubator<ArrayList<Float>,ArrayLi
 		
 		float fitnessBuffer;
 		
-		while (nextGen.size() < populationSize){							//WARNING: only works for even number populations coz needs 2 parents
+		while (nextGen.size() < populationSize - 2){							//WARNING: only works for even number populations coz needs 2 parents
 			System.out.println(nextGen.size()+" : " + populationSize);//DEBUG
 			parent1Data = lastGen.remove(0);
 			parent2Data = lastGen.remove(0);
@@ -169,6 +169,12 @@ public class ClassifierIncubator implements REIncubator<ArrayList<Float>,ArrayLi
 			nextGen.add(new EvaluationEntry<Classifier,Float>(child2,fitnessBuffer));
 			System.out.println("CHILDREN : " + child1 + " , " + child2);//DEBUG
 		}
+		
+		Classifier newCommer = generator.generateRandom();
+		nextGen.add(new EvaluationEntry<Classifier,Float>(newCommer, evaluator.evaluate(newCommer,ld)));
+
+		newCommer = generator.generateRandom();
+		nextGen.add(new EvaluationEntry<Classifier,Float>(newCommer, evaluator.evaluate(newCommer,ld)));
 		
 		return nextGen;
 	}
