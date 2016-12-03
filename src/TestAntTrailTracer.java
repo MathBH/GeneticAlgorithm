@@ -54,10 +54,20 @@ public class TestAntTrailTracer {
 		tree_eq_pieceOfShit.setNoNode(tree_c_true);
 		tree_eq_pieceOfShit.setYesNode(tree_c_false);
 		
-		AntTrailTracer tracer = new AntTrailTracer();
+		AntTrailTracer<ArrayList<String>,Boolean> tracer = new AntTrailTracer();
+		DecisionTree<ArrayList<String>,Boolean> lastNode = null;
+		ArrayList<DecisionTree<ArrayList<String>,Boolean>> path = tracer.randomPath(tree_eq_president);
 		
-		System.out.println(tracer.randomPath(tree_eq_president));
+		System.out.println(path);
 		
+		for (DecisionTree<ArrayList<String>,Boolean> node: path){
+			System.out.println(node);
+			if (lastNode == null)
+				continue; System.out.println("CONTINUED");
+			
+			assertFalse(lastNode.getYesNode().equals(node) || lastNode.getNoNode().equals(node));
+		}
+		System.out.println("------------------------------------------");
 		printDecisionTree(tree_eq_president);
 	}
 	

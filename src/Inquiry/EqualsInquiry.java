@@ -20,4 +20,9 @@ public class EqualsInquiry<E extends Comparable> implements ValInquiry<E>{
 	public void setCriteria(E criteria) {
 		this.criteria = criteria;
 	}
+	
+	@Override
+	public String toString(){
+		return "="+criteria;
+	}
 }

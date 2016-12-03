@@ -7,6 +7,10 @@ public class ReasoningEngine<P,C> {
 		this.decisionTree = null;
 	}
 	
+	public ReasoningEngine(DecisionTree<P,C> decisionTree){
+		this.decisionTree = decisionTree;
+	}
+	
 	public void setDecisionTree(DecisionTree<P,C> decisionTree){
 		this.decisionTree = decisionTree;
 	}
@@ -29,7 +33,7 @@ public class ReasoningEngine<P,C> {
 		return null;
 	}
 	
-	DecisionTree<P,C> getDecisionTree(){	//For testing
+	DecisionTree<P,C> getDecisionTree(){
 		return this.decisionTree;
 	}
 }

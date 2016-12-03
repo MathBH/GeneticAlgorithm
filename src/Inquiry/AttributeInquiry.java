@@ -27,7 +27,7 @@ public class AttributeInquiry<T> implements Inquiry<ArrayList<T>>, CriteriaBased
 
 	@Override
 	public String toString(){
-		return (this.getClass().toString() + " : " + this.inquiry.getClass().toString() + "(" + this.inquiry.getCriteria()+")" + " [" + this.index +"]");
+		return ("attr"+" [" + this.index +"]"+ this.inquiry);
 	}
 
 	@Override

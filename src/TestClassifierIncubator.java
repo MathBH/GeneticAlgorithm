@@ -30,12 +30,13 @@ public class TestClassifierIncubator {
 
 	@Test
 	public void test() {
+		float treshold = 0.95f;
 		File learningData = new File(LEARNING_DATA_PATH);
 		assertTrue(learningData.exists());
 		
 		ClassifierIncubator incubator = new ClassifierIncubator();
 		
-		Classifier drClassy = incubator.generateReasoningEngine(10, learningData);
+		Classifier drClassy = incubator.generateReasoningEngine(learningData, treshold);
 		
 		CLD cld = null;
 		

@@ -13,9 +13,9 @@ public class AntTrailGS<P,C> implements GeneticShuffler<P,C>{
 	}
 
 	@Override
-	public GeneticChildPair<P, C> shuffle(DecisionTree<P, C> parent1, DecisionTree<P, C> parent2) {
-		DecisionTree<P, C> child1;
-		DecisionTree<P, C> child2;
+	public GeneticChildPair<P, C> shuffle(DecisionTree<P, C> parent1, DecisionTree<P, C> parent2) {	//TODO: figure if this should take in a ReasoningEngine instead (this is why their called ghosts instead of children atm coz wa supposed to be put in children originally)
+		DecisionTree<P, C> ghost1;
+		DecisionTree<P, C> ghost2;
 		
 		trail1 = tracer.randomPath(parent1);
 		trail2 = tracer.randomPath(parent2);
@@ -30,11 +30,14 @@ public class AntTrailGS<P,C> implements GeneticShuffler<P,C>{
 				trail1.get(idx1-1).setNoNode(trail2.get(idx2));
 			else{
 				System.err.println("Uhm, it wasn't the no node or the yes node???");
+				System.out.println(trail1.get(idx1-1).getYesNode());//DEBUG
+				System.out.println(trail1.get(idx1-1).getNoNode());//DEBUG
+				System.out.println(trail1.get(idx1));//DEBUG
 				return null;
 			}
-			child1 = trail1.get(0);
+			ghost1 = trail1.get(0);
 		} else {
-			child1 = trail2.get(idx2);
+			ghost1 = trail2.get(idx2);
 		}
 		
 		if (idx2 >= 1){
@@ -44,14 +47,17 @@ public class AntTrailGS<P,C> implements GeneticShuffler<P,C>{
 				trail2.get(idx2-1).setNoNode(trail1.get(idx1));
 			else{
 				System.err.println("Uhm, it wasn't the no node or the yes node???");
+				System.out.println(trail1.get(idx1-1).getYesNode());//DEBUG
+				System.out.println(trail1.get(idx1-1).getNoNode());//DEBUG
+				System.out.println(trail1.get(idx1));//DEBUG
 				return null;
 			}
-			child2 = trail2.get(0);
+			ghost2 = trail2.get(0);
 		} else {
-			child2 = trail1.get(idx1);
+			ghost2 = trail1.get(idx1);
 		}
 			
-		return new GeneticChildPair<P,C>(child1,child2);
+		return new GeneticChildPair<P,C>(ghost1,ghost2);
 	}
 
 }

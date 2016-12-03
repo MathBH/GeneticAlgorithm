@@ -17,9 +17,9 @@ public class AntTrailTracer<P,C> implements DTPathTracer<P,C>{
 		trail.add(myTree);
 		while(myTree.hasChildren()){
 			if (coin.flip())
-				myTree = tree.getYesNode();
+				myTree = myTree.getYesNode();
 			else
-				myTree = tree.getNoNode();
+				myTree = myTree.getNoNode();
 			trail.add(myTree);
 		}
 		return trail;
