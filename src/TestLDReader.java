@@ -1,15 +1,13 @@
 import static org.junit.Assert.*;
 
-import java.io.File;
-import java.util.ArrayList;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-public class TestPushActionScanner {
+import java.io.File;
+import java.io.FileNotFoundException;
+public class TestLDReader {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -29,10 +27,14 @@ public class TestPushActionScanner {
 
 	@Test
 	public void test() {
-		File file = new File("sample.training.classifier");
-		PushActionScanner scanner = new PushActionScanner(file);
-		while(scanner.pushNextLine()){
-			System.out.println(scanner.getLine());
+		try{
+		LDReader reader = new LDReader(new File("src/sampleData/iris.data"));
+		while (reader.hasNext()){
+			System.out.println(reader.next());
+		}
+		
+		}catch(FileNotFoundException e){
+			fail();
 		}
 	}
 

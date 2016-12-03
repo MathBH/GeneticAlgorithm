@@ -1,15 +1,12 @@
 import static org.junit.Assert.*;
 
-import java.io.File;
-import java.util.ArrayList;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TestPushActionScanner {
+public class TestDie {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -29,11 +26,7 @@ public class TestPushActionScanner {
 
 	@Test
 	public void test() {
-		File file = new File("sample.training.classifier");
-		PushActionScanner scanner = new PushActionScanner(file);
-		while(scanner.pushNextLine()){
-			System.out.println(scanner.getLine());
-		}
+		System.out.println(Math.round(1.4));
 	}
 
 }

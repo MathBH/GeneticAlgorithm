@@ -1,7 +1,6 @@
 import static org.junit.Assert.*;
 
-import java.io.File;
-import java.util.ArrayList;
+import java.util.Scanner;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -9,7 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TestPushActionScanner {
+public class TestLDParser {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -29,11 +28,10 @@ public class TestPushActionScanner {
 
 	@Test
 	public void test() {
-		File file = new File("sample.training.classifier");
-		PushActionScanner scanner = new PushActionScanner(file);
-		while(scanner.pushNextLine()){
-			System.out.println(scanner.getLine());
-		}
+		LDParser parser = new LDParser(4,2);
+		
+		ClassifierEx ce = parser.read(new Scanner(System.in));
+		System.out.println(ce.getPremise() + " : " + ce.getConclusion());
 	}
 
 }
