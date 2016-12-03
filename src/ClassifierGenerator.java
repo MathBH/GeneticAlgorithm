@@ -6,21 +6,17 @@
 import java.util.ArrayList;
 
 public class ClassifierGenerator {
-	private final int DEFAULT_LEAF_LIMIT = 64;
 	private RGIFloatAttributeSet inquiryGenerator;
 	private RGClassificationSet conclusionGenerator;
 	private RGDecisionTree<ArrayList<Float>,ArrayList<Boolean>> decisionTreeGenerator;
-	private int leafLimit;
 	
 	private int numAttr;
 	private int numClass;
 	
 	public ClassifierGenerator(){
-		this.leafLimit = DEFAULT_LEAF_LIMIT;
 	}
 	
 	public ClassifierGenerator(int numAttr, int numClass){
-		this.leafLimit = DEFAULT_LEAF_LIMIT;
 		setDataParamaters(numAttr,numClass);
 	}
 	
@@ -31,7 +27,10 @@ public class ClassifierGenerator {
 		inquiryGenerator = new RGIFloatAttributeSet(this.numAttr);
 		conclusionGenerator = new RGClassificationSet(this.numClass);
 		decisionTreeGenerator = new RGDecisionTree(inquiryGenerator,conclusionGenerator);
-		decisionTreeGenerator.setLeafCap(leafLimit);
+	}
+	
+	public void setLeafCap(int leafCap){
+		this.decisionTreeGenerator.setLeafCap(leafCap);
 	}
 	
 	public Classifier generateRandom(){

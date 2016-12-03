@@ -10,7 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class TestClassifierIncubator {
-	private static final String LEARNING_DATA_PATH = "src/sampleData/iris_small.data";
+	private static final String LEARNING_DATA_PATH = "src/sampleData/iris.data";
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -30,6 +30,8 @@ public class TestClassifierIncubator {
 
 	@Test
 	public void test() {
+		int leafCap = 64;
+		int populationSize = 64;
 		float treshold = 0.95f;
 		File learningData = new File(LEARNING_DATA_PATH);
 		assertTrue(learningData.exists());

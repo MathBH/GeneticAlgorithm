@@ -11,7 +11,7 @@ import org.junit.Test;
 import Inquiry.AttributeInquiry;
 import Inquiry.EqualsInquiry;
 
-public class testAntTrailGS {
+public class TestAntTrailGS {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
