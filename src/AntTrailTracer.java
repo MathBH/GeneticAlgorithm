@@ -15,11 +15,12 @@ public class AntTrailTracer<P,C> implements DTPathTracer<P,C>{
 		ArrayList<DecisionTree<P,C>> trail = new ArrayList<DecisionTree<P,C>>();
 		DecisionTree<P, C> myTree = tree;
 		trail.add(myTree);
-		while(tree.hasChildren()){
+		while(myTree.hasChildren()){
 			if (coin.flip())
 				myTree = tree.getYesNode();
 			else
 				myTree = tree.getNoNode();
+			trail.add(myTree);
 		}
 		return trail;
 	}

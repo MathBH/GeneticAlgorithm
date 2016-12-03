@@ -27,17 +27,19 @@ public class ClassifierMutator implements GeneticMutator<ArrayList<Float>,ArrayL
 		DecisionTree<ArrayList<Float>, ArrayList<Boolean>> targetNode =trail.get(die.roll(trail.size()));
 		Inquiry<ArrayList<Float>> inquiry = targetNode.getDecisionFactor();
 		
+		if(inquiry == null)
+			return decisionTree;
 		if (!inquiry.getClass().isAssignableFrom(AttributeInquiry.class))
-			return trail.get(0);
+			return decisionTree;
 		
 		AttributeInquiry<Float> attrIq = (AttributeInquiry<Float>) inquiry;
 		float origCriteria = attrIq.getCriteria();
 		
 		if(coin.flip(entropy))
-			origCriteria = dev.deviate(origCriteria, origCriteria*entropy);
-		
-		if(coin.flip(entropy))
 			attrIq = attrGen.randomGenerate(origCriteria);
+		
+		float newCriteria = dev.deviate(origCriteria, origCriteria*entropy);
+		attrIq.setCriteria(newCriteria);
 		
 		targetNode.setDecisionFactor(attrIq);
 		

@@ -34,4 +34,9 @@ public class AttributeInquiry<T> implements Inquiry<ArrayList<T>>, CriteriaBased
 	public T getCriteria() {
 		return this.inquiry.getCriteria();
 	}
+
+	@Override
+	public void setCriteria(T criteria) {
+		this.inquiry.setCriteria(criteria);
+	}
 }

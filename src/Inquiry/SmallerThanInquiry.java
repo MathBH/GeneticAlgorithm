@@ -16,4 +16,9 @@ public class SmallerThanInquiry<E extends Comparable> implements ValInquiry<E>{
 		return this.criteria;
 	}
 
+	@Override
+	public void setCriteria(E criteria) {
+		this.criteria = criteria;
+	}
+
 }
