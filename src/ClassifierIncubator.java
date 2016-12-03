@@ -3,12 +3,18 @@ import java.util.ArrayList;
 import java.io.FileNotFoundException;
 
 public class ClassifierIncubator implements REIncubator<ArrayList<Float>,ArrayList<Boolean>>{
+	private final float DEFAULT_ENTROPY_INCR = 1.0f;
 	private ClassifierGenerator generator;
 	private REEvaluator evaluator;
-	private float entropy;
+	private float entropyIncr;
 	
-	public ClassifierIncubator(float entropy){
-		this.entropy = entropy;
+	public ClassifierIncubator(){
+		setEntropyIncrement(DEFAULT_ENTROPY_INCR);
+		evaluator = new REEvaluator();
+	}
+	
+	public ClassifierIncubator(float entropyIncr){
+		setEntropyIncrement(entropyIncr);
 		evaluator = new REEvaluator();
 	}
 	
@@ -33,7 +39,7 @@ public class ClassifierIncubator implements REIncubator<ArrayList<Float>,ArrayLi
 		return null;
 	}
 	
-	public void setEntropy(float entropy){
-		this.entropy = entropy;
+	public void setEntropyIncrement(float entropyIncr){
+		this.entropyIncr = entropyIncr;
 	}
 }

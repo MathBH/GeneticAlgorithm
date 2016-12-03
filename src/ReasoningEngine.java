@@ -28,4 +28,8 @@ public class ReasoningEngine<P,C> {
 		
 		return null;
 	}
+	
+	DecisionTree<P,C> getDecisionTree(){	//For testing
+		return this.decisionTree;
+	}
 }
