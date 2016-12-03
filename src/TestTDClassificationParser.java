@@ -1,14 +1,12 @@
 import static org.junit.Assert.*;
 
-import java.io.File;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TestPushActionScanner {
+public class TestTDClassificationParser {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -28,11 +26,7 @@ public class TestPushActionScanner {
 
 	@Test
 	public void test() {
-		File file = new File("sample.training.classifier");
-		PushActionScanner scanner = new PushActionScanner(file);
-		while(scanner.pushNextLine()){
-			System.out.println(scanner.getLine());
-		}
+		fail("Not yet implemented");
 	}
 
 }

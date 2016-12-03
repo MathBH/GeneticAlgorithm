@@ -1,18 +1,18 @@
 
-public class GeneticChildPair<P,C> {
-	private DecisionTree<P,C> firstChild;
-	private DecisionTree<P,C> secondChild;
+public class GeneticChildPair {
+	private DecisionTree firstChild;
+	private DecisionTree secondChild;
 	
-	public GeneticChildPair(DecisionTree<P,C> firstChild, DecisionTree<P,C> secondChild){
+	public GeneticChildPair(DecisionTree firstChild, DecisionTree secondChild){
 		this.firstChild = firstChild;
 		this.secondChild = secondChild;
 	}
 	
-	public DecisionTree<P,C> getFirstChild(){
+	public DecisionTree getFirstChild(){
 		return this.firstChild;
 	}
 	
-	public DecisionTree<P,C> getSecondChild(){
+	public DecisionTree getSecondChild(){
 		return this.secondChild;
 	}
 }
