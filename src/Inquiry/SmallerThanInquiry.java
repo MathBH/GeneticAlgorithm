@@ -1,5 +1,5 @@
 package Inquiry;
-public class SmallerThanInquiry<E extends Comparable> extends Inquiry<E>{
+public class SmallerThanInquiry<E extends Comparable> implements ValInquiry<E>{
 	private E criteria;
 	
 	public SmallerThanInquiry(E criteria){
@@ -9,6 +9,11 @@ public class SmallerThanInquiry<E extends Comparable> extends Inquiry<E>{
 	@Override
 	public boolean isTrueFor(E input) {
 		return input.compareTo(criteria) < 0;
+	}
+
+	@Override
+	public E getCriteria() {
+		return this.criteria;
 	}
 
 }

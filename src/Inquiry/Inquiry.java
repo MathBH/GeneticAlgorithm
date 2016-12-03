@@ -1,5 +1,5 @@
 package Inquiry;
 
-public abstract class Inquiry<E> {
-	abstract public boolean isTrueFor(E input);
+public interface Inquiry<T> {
+	public boolean isTrueFor(T arg);
 }

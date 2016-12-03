@@ -4,12 +4,12 @@ public class AntTrailGS<P,C> implements GeneticShuffler<P,C>{
 	private ArrayList<DecisionTree<P,C>> trail1;
 	private ArrayList<DecisionTree<P,C>> trail2;
 	
+	private DTPathTracer tracer;
 	private Die die;
-	private Coin coin;
 	
 	public AntTrailGS(){
+		tracer = new AntTrailTracer();
 		die = new Die();
-		coin = new Coin();
 	}
 
 	@Override
@@ -17,8 +17,8 @@ public class AntTrailGS<P,C> implements GeneticShuffler<P,C>{
 		DecisionTree<P, C> child1;
 		DecisionTree<P, C> child2;
 		
-		trail1 = wander(parent1);
-		trail2 = wander(parent2);
+		trail1 = tracer.randomPath(parent1);
+		trail2 = tracer.randomPath(parent2);
 		
 		int idx1 = die.roll(trail1.size());
 		int idx2 = die.roll(trail2.size());
@@ -52,13 +52,6 @@ public class AntTrailGS<P,C> implements GeneticShuffler<P,C>{
 		}
 			
 		return new GeneticChildPair<P,C>(child1,child2);
-	}
-
-	private ArrayList<DecisionTree<P,C>> wander(DecisionTree<P, C> tree){
-		ArrayList<DecisionTree<P,C>> trail = new ArrayList<DecisionTree<P,C>>();
-		trail.add(tree);
-		if(!tree.hasChildren())
-			return trail;
 	}
 
 }

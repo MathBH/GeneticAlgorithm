@@ -35,6 +35,10 @@ public class DecisionTree<P,C>{
 		return this.conclusion;
 	}
 	
+	public Inquiry<P> getDecisionFactor(){
+		return this.decisionFactor;
+	}
+	
 	public DecisionTree<P,C> getYesNode(){
 		return this.yesNode;
 	}

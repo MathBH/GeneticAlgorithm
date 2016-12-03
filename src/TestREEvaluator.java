@@ -8,8 +8,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import Inquiry.AttributeInquiry;
 import Inquiry.EqualsInquiry;
-import Inquiry.IndexInquiry;
 
 public class TestREEvaluator {
 
@@ -37,8 +37,8 @@ public class TestREEvaluator {
 		EqualsInquiry<String> equals_president = new EqualsInquiry<String>("president");
 		EqualsInquiry<String> equals_pieceOfShit = new EqualsInquiry<String>("piece of shit");
 		
-		IndexInquiry<ArrayList<String>> i_equals_president = new IndexInquiry<ArrayList<String>>(equals_president,0);
-		IndexInquiry<ArrayList<String>> i_equals_pieceOfShit = new IndexInquiry<ArrayList<String>>(equals_pieceOfShit,1);
+		AttributeInquiry<String> i_equals_president = new AttributeInquiry<String>(equals_president,0);
+		AttributeInquiry<String> i_equals_pieceOfShit = new AttributeInquiry<String>(equals_pieceOfShit,1);
 		
 		DecisionTree<ArrayList<String>,Boolean> tree_eq_pieceOfShit = new DecisionTree<ArrayList<String>,Boolean>();
 		tree_eq_pieceOfShit.setDecisionFactor(i_equals_pieceOfShit);

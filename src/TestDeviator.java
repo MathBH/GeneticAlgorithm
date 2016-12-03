@@ -1,15 +1,12 @@
 import static org.junit.Assert.*;
 
-import java.util.Scanner;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import Inquiry.*;
 
-public class TestLDParser {
+public class TestDeviator {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -29,10 +26,10 @@ public class TestLDParser {
 
 	@Test
 	public void test() {
-		CLDParser parser = new CLDParser(4,2);
-		
-		ClassifierEx ce = parser.read(new Scanner(System.in));
-		System.out.println(ce.getPremise() + " : " + ce.getConclusion());
+		Deviator deviator = new Deviator();
+		for(int i = 0; i < 100; i++){
+			System.out.println(deviator.deviate(0.0f, 10.0f));
+		}
 	}
 
 }

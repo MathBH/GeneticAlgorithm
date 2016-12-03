@@ -61,9 +61,9 @@ public class TestInquiry {
 		EqualsInquiry<Float> inquiry_equalsOTwo = new EqualsInquiry<Float>(0.2f);
 		GreaterThanInquiry<Float> inquiry_greaterThanOTwo = new GreaterThanInquiry<Float>(0.2f);
 		
-		IndexInquiry<ArrayList<Float>> idxIq_smallerThanOTwo = new IndexInquiry<ArrayList<Float>>(inquiry_smallerThanOTwo, 0);
-		IndexInquiry<ArrayList<Float>> idxIq_equalsOTwo = new IndexInquiry<ArrayList<Float>>(inquiry_equalsOTwo, 1);
-		IndexInquiry<ArrayList<Float>> idxIq_greaterThanOTwo = new IndexInquiry<ArrayList<Float>>(inquiry_greaterThanOTwo, 2);
+		AttributeInquiry<Float> idxIq_smallerThanOTwo = new AttributeInquiry<Float>(inquiry_smallerThanOTwo, 0);
+		AttributeInquiry<Float> idxIq_equalsOTwo = new AttributeInquiry<Float>(inquiry_equalsOTwo, 1);
+		AttributeInquiry<Float> idxIq_greaterThanOTwo = new AttributeInquiry<Float>(inquiry_greaterThanOTwo, 2);
 
 		ArrayList<Float>dataSet1 = new ArrayList();
 		dataSet1.add(0.1f);

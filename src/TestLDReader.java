@@ -28,7 +28,7 @@ public class TestLDReader {
 	@Test
 	public void test() {
 		try{
-		LDReader reader = new LDReader(new File("src/sampleData/iris.data"));
+		CLDReader reader = new CLDReader(new File("src/sampleData/iris.data"));
 		while (reader.hasNext()){
 			System.out.println(reader.next());
 		}
