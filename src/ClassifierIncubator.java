@@ -113,9 +113,11 @@ public class ClassifierIncubator implements REIncubator<ArrayList<Float>,ArrayLi
 			}
 			System.out.println(populationData.getFirst());
 			populationData = nextGeneration(populationData, ld);
+			System.out.println("NEW GEN: " + populationData);//DEBUG
 			counter ++;
 		}
 
+		System.out.println("GENERATIONS NEEDED: " + counter);
 		System.out.println(populationData.getFirst());
 		return populationData.getFirst().getAgent();
 	}
@@ -130,15 +132,20 @@ public class ClassifierIncubator implements REIncubator<ArrayList<Float>,ArrayLi
 		GeneticChildPair<ArrayList<Float>,ArrayList<Boolean>> childrenGhosts;
 		Classifier child1;
 		Classifier child2;
+		EvaluationEntry<Classifier,Float> parent1Data;
+		EvaluationEntry<Classifier,Float> parent2Data;
 		Classifier parent1;
 		Classifier parent2;
 		
 		float fitnessBuffer;
 		
-		while (nextGen.size() < populationSize){
+		while (nextGen.size() < populationSize){							//WARNING: only works for even number populations coz needs 2 parents
 			System.out.println(nextGen.size()+" : " + populationSize);//DEBUG
-			parent1 = lastGen.remove(0).getAgent();
-			parent2 = lastGen.remove(0).getAgent();
+			parent1Data = lastGen.remove(0);
+			parent2Data = lastGen.remove(0);
+			parent1 = parent1Data.getAgent();
+			parent2 = parent2Data.getAgent();
+			
 			System.out.println("PARENTS : " + parent1 + " , " + parent2);//DEBUG
 			System.out.println("shuffle");
 			childrenGhosts = gShuffler.shuffle(parent1.getDecisionTree(),parent2.getDecisionTree());
@@ -146,6 +153,8 @@ public class ClassifierIncubator implements REIncubator<ArrayList<Float>,ArrayLi
 			
 			child1 = new Classifier(childrenGhosts.getFirstChild());
 			fitnessBuffer = evaluator.evaluate(child1, ld);
+			child1.setDecisionTree(mutator.mutate(childrenGhosts.getFirstChild(),1.0f -fitnessBuffer));
+			System.out.println("FITNESS: " + fitnessBuffer);//DEBUG
 			
 			nextGen.add(new EvaluationEntry<Classifier,Float>(child1,fitnessBuffer));
 			
@@ -154,6 +163,8 @@ public class ClassifierIncubator implements REIncubator<ArrayList<Float>,ArrayLi
 			
 			child2 = new Classifier(childrenGhosts.getSecondChild());
 			fitnessBuffer = evaluator.evaluate(child2, ld);
+			child2.setDecisionTree(mutator.mutate(childrenGhosts.getSecondChild(),1.0f -fitnessBuffer));
+			System.out.println("FITNESS: " + fitnessBuffer);//DEBUG
 			
 			nextGen.add(new EvaluationEntry<Classifier,Float>(child2,fitnessBuffer));
 			System.out.println("CHILDREN : " + child1 + " , " + child2);//DEBUG
