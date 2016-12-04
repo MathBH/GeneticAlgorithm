@@ -40,5 +40,13 @@ public class ClassifierGenerator {
 		cl.setDecisionTree(decisionTreeGenerator.randomGenerate());
 		return cl;
 	}
+	
+	public Classifier generateRandom(int numLeaves){
+		if (decisionTreeGenerator == null)
+			return null;
+		Classifier cl = new Classifier();
+		cl.setDecisionTree(decisionTreeGenerator.randomGenerate(numLeaves));
+		return cl;
+	}
 
 }

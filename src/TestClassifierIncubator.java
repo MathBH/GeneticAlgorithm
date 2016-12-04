@@ -38,7 +38,7 @@ public class TestClassifierIncubator {
 		
 		ClassifierIncubator incubator = new ClassifierIncubator();
 		
-		Classifier potatowedge = incubator.generateReasoningEngine(learningData, treshold);
+		Classifier potatowedge = incubator.generateReasoningEngine(25, populationSize, learningData, treshold);
 		
 		CLD cld = null;
 		
@@ -56,7 +56,6 @@ public class TestClassifierIncubator {
 			System.out.println("AI answer: "+ potatowedge.concludeFrom(test.getPremise()));
 			System.out.println("Correct answer: "+ test.getConclusion());
 		}
-		
 		//printDecisionTree(drClassy.getDecisionTree());
 	}
 	

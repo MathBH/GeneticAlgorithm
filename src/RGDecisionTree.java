@@ -36,9 +36,9 @@ public class RGDecisionTree<P,C> extends RandomGenerator<DecisionTree<P,C>>{
 	 * Decision Tree generator
 	 */
 	
-	@Override
-	public DecisionTree<P,C> randomGenerate() {
-		int numLeaves = this.rollForInterval(leafCap) + 1;	//to be used as size value for treeParts collection
+	public DecisionTree<P,C> randomGenerate(int numLeaves) {
+		if(numLeaves <= 0)
+			numLeaves = 1;
 		ArrayList<DecisionTree<P,C>> treeParts= new ArrayList<DecisionTree<P,C>>();
 		
 		Inquiry<P> inquiryBuffer;
@@ -78,6 +78,12 @@ public class RGDecisionTree<P,C> extends RandomGenerator<DecisionTree<P,C>>{
 		}
 		
 		return treeParts.get(0);
+	}
+	
+	@Override
+	public DecisionTree<P,C> randomGenerate() {
+		int numLeaves = this.rollForInterval(leafCap) + 1;	//to be used as size value for treeParts collection
+		return randomGenerate(numLeaves);
 	}
 	
 }

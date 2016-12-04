@@ -1,10 +1,12 @@
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Observable;
 import java.io.FileNotFoundException;
 
-public class ClassifierIncubator implements REIncubator<ArrayList<Float>,ArrayList<Boolean>>{
+public class ClassifierIncubator extends Observable implements REIncubator<ArrayList<Float>,ArrayList<Boolean>>{
 	private final float DEFAULT_ENTROPY_INCR = 1.0f;
 	private final int DEFAULT_POPULATION_SIZE = 64;
+	private final int DEFAULT_LEAF_CAP= 64;	//TODO: fix this ugly hack fix
 	private final int MAX_GENERATIONS = 90000;
 	private ClassifierGenerator generator;
 	private REEvaluator evaluator;
@@ -27,8 +29,6 @@ public class ClassifierIncubator implements REIncubator<ArrayList<Float>,ArrayLi
 		setPopulationSize(DEFAULT_POPULATION_SIZE);
 		evaluator = new REEvaluator();
 	}
-	
-
 	
 	public ClassifierIncubator(int populationSize, float entropyIncr){
 		setEntropyIncrement(entropyIncr);
@@ -72,47 +72,6 @@ public class ClassifierIncubator implements REIncubator<ArrayList<Float>,ArrayLi
 			}
 			System.out.println(populationData.getFirst());
 			populationData = nextGeneration(populationData, ld);
-			counter ++;
-		}
-
-		System.out.println(populationData.getFirst());
-		return populationData.getFirst().getAgent();
-	}
-	
-	public Classifier generateReasoningEngine(File ldFile, float treshold){
-		this.treshold = treshold;
-		CLD ld;
-		SortedList<EvaluationEntry<Classifier,Float>> populationData;
-		
-		try{
-			ld = new CLD(ldFile);
-		}catch(FileNotFoundException e){
-			System.err.println("FILE NOT FOUND: "+ldFile);
-			return null;
-		}
-		
-		populationData = new SortedList<EvaluationEntry<Classifier,Float>>();
-		generator = new ClassifierGenerator(ld.getNumAttrs(),ld.getNumClass());
-		
-		Classifier agentBuffer;
-		float fitnessScoreBuffer;
-		for (int i = 0; i < populationSize; i++){
-			agentBuffer = generator.generateRandom();
-			fitnessScoreBuffer = evaluator.evaluate(agentBuffer, ld);
-			populationData.add(new EvaluationEntry<Classifier,Float>(agentBuffer,fitnessScoreBuffer));
-		}
-		
-		mutator = new ClassifierMutator(ld.getNumAttrs());
-		gShuffler = new AntTrailGS();
-		
-		int counter = 0;
-		while(!pass(populationData.getFirst().getScore())){
-			if (counter >= MAX_GENERATIONS){
-				System.out.println("BREAK");//DEBUG
-				break;
-			}
-			System.out.println(populationData.getFirst());
-			populationData = nextGeneration(populationData, ld);
 			System.out.println("NEW GEN: " + populationData);//DEBUG
 			counter ++;
 		}
@@ -120,6 +79,10 @@ public class ClassifierIncubator implements REIncubator<ArrayList<Float>,ArrayLi
 		System.out.println("GENERATIONS NEEDED: " + counter);
 		System.out.println(populationData.getFirst());
 		return populationData.getFirst().getAgent();
+	}
+	
+	public Classifier generateReasoningEngine(File ldFile, float treshold){ 	//TODO: fix this ugly hack fix
+		return generateReasoningEngine(DEFAULT_LEAF_CAP, populationSize,ldFile, treshold);
 	}
 	
 	public void setPopulationSize(int populationSize){
@@ -139,7 +102,7 @@ public class ClassifierIncubator implements REIncubator<ArrayList<Float>,ArrayLi
 		
 		float fitnessBuffer;
 		
-		while (nextGen.size() < populationSize - 2){							//WARNING: only works for even number populations coz needs 2 parents
+		while (nextGen.size() < populationSize){							//WARNING: only works for even number populations coz needs 2 parents
 			System.out.println(nextGen.size()+" : " + populationSize);//DEBUG
 			parent1Data = lastGen.remove(0);
 			parent2Data = lastGen.remove(0);

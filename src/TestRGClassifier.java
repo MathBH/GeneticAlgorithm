@@ -32,7 +32,7 @@ public class TestRGClassifier {
 		
 		Classifier classifierBuffer;
 		for (int i = 0; i < itterations; i++){
-			classifierBuffer = gen.generateRandom();
+			classifierBuffer = gen.generateRandom(1);
 			System.out.println("NEW CLASSIFIER\n-----------------\n");
 			printClassifier(classifierBuffer);
 			System.out.println("=================\n-----------------\n");

@@ -35,7 +35,7 @@ public class TestDecisionTree {
 		DecisionTree decisionTreeBuffer;
 		
 		for (int i = 0; i < itterations; i++){
-			decisionTreeBuffer = decisionTreeGenerator.randomGenerate();
+			decisionTreeBuffer = decisionTreeGenerator.randomGenerate(3);
 			System.out.println("NEW DECISION TREE\n-----------------\n");
 			printDecisionTree(decisionTreeBuffer);
 			System.out.println("=================\n-----------------\n");

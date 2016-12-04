@@ -62,7 +62,7 @@ public class DecisionTree<P,C>{
 	
 	@Override
 	public String toString(){
-		String output = this.getClass().toString();
+		String output = "dT";
 		if(this.decisionFactor != null)
 			output += "(" + this.decisionFactor + ")";
 		if(this.conclusion != null)
