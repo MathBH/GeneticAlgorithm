@@ -30,15 +30,16 @@ public class TestClassifierIncubator {
 
 	@Test
 	public void test() {
-		int leafCap = 64;
+		int leafCap = 25;
 		int populationSize = 64;
+		float mutationRate = 2.0f;
 		float treshold = 0.95f;
 		File learningData = new File(LEARNING_DATA_PATH);
 		assertTrue(learningData.exists());
 		
 		ClassifierIncubator incubator = new ClassifierIncubator();
 		
-		Classifier potatowedge = incubator.generateReasoningEngine(25, populationSize, learningData, treshold);
+		Classifier potatowedge = incubator.generateReasoningEngine(leafCap, populationSize, mutationRate, learningData, treshold);
 		
 		CLD cld = null;
 		

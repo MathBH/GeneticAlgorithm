@@ -4,13 +4,13 @@ import java.util.Observable;
 import java.io.FileNotFoundException;
 
 public class ClassifierIncubator extends Observable implements REIncubator<ArrayList<Float>,ArrayList<Boolean>>{
-	private final float DEFAULT_ENTROPY_INCR = 1.0f;
+	private final float DEFAULT_MUTATION_RATE = 1.0f;
 	private final int DEFAULT_POPULATION_SIZE = 64;
 	private final int DEFAULT_LEAF_CAP= 64;	//TODO: fix this ugly hack fix
 	private final int MAX_GENERATIONS = 90000;
 	private ClassifierGenerator generator;
 	private REEvaluator evaluator;
-	private float entropyIncr;
+	private float mutationRate;
 	
 	private float treshold;
 	private int populationSize;
@@ -19,24 +19,24 @@ public class ClassifierIncubator extends Observable implements REIncubator<Array
 	private GeneticShuffler<ArrayList<Float>,ArrayList<Boolean>> gShuffler;
 	
 	public ClassifierIncubator(){
-		setEntropyIncrement(DEFAULT_ENTROPY_INCR);
+		setMutationRate(DEFAULT_MUTATION_RATE);
 		setPopulationSize(DEFAULT_POPULATION_SIZE);
 		evaluator = new REEvaluator();
 	}
 	
-	public ClassifierIncubator(float entropyIncr){
-		setEntropyIncrement(entropyIncr);
+	public ClassifierIncubator(float mutationRate){
+		setMutationRate(mutationRate);
 		setPopulationSize(DEFAULT_POPULATION_SIZE);
 		evaluator = new REEvaluator();
 	}
 	
-	public ClassifierIncubator(int populationSize, float entropyIncr){
-		setEntropyIncrement(entropyIncr);
+	public ClassifierIncubator(int populationSize, float mutationRate){
+		setMutationRate(mutationRate);
 		setPopulationSize(populationSize);
 		evaluator = new REEvaluator();
 	}
 	
-	public Classifier generateReasoningEngine(int leafCap, int populationSize, File ldFile, float treshold){
+	public Classifier generateReasoningEngine(int leafCap, int populationSize, float mutationRate, File ldFile, float treshold){
 		setPopulationSize(populationSize);
 		this.treshold = treshold;
 		CLD ld;
@@ -82,7 +82,7 @@ public class ClassifierIncubator extends Observable implements REIncubator<Array
 	}
 	
 	public Classifier generateReasoningEngine(File ldFile, float treshold){ 	//TODO: fix this ugly hack fix
-		return generateReasoningEngine(DEFAULT_LEAF_CAP, populationSize,ldFile, treshold);
+		return generateReasoningEngine(DEFAULT_LEAF_CAP, populationSize, DEFAULT_MUTATION_RATE, ldFile, treshold);
 	}
 	
 	public void setPopulationSize(int populationSize){
@@ -116,7 +116,7 @@ public class ClassifierIncubator extends Observable implements REIncubator<Array
 			
 			child1 = new Classifier(childrenGhosts.getFirstChild());
 			fitnessBuffer = evaluator.evaluate(child1, ld);
-			child1.setDecisionTree(mutator.mutate(childrenGhosts.getFirstChild(),1.0f -fitnessBuffer));
+			child1.setDecisionTree(mutator.mutate(childrenGhosts.getFirstChild(),(1.0f -fitnessBuffer)*mutationRate));
 			System.out.println("FITNESS: " + fitnessBuffer);//DEBUG
 			
 			nextGen.add(new EvaluationEntry<Classifier,Float>(child1,fitnessBuffer));
@@ -126,7 +126,7 @@ public class ClassifierIncubator extends Observable implements REIncubator<Array
 			
 			child2 = new Classifier(childrenGhosts.getSecondChild());
 			fitnessBuffer = evaluator.evaluate(child2, ld);
-			child2.setDecisionTree(mutator.mutate(childrenGhosts.getSecondChild(),1.0f -fitnessBuffer));
+			child2.setDecisionTree(mutator.mutate(childrenGhosts.getSecondChild(),(1.0f -fitnessBuffer)*mutationRate));
 			System.out.println("FITNESS: " + fitnessBuffer);//DEBUG
 			
 			nextGen.add(new EvaluationEntry<Classifier,Float>(child2,fitnessBuffer));
@@ -146,7 +146,7 @@ public class ClassifierIncubator extends Observable implements REIncubator<Array
 		return score >= this.treshold;
 	}
 	
-	public void setEntropyIncrement(float entropyIncr){
-		this.entropyIncr = entropyIncr;
+	public void setMutationRate(float mutationRate){
+		this.mutationRate = mutationRate;
 	}
 }
