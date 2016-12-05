@@ -3,12 +3,14 @@ import java.util.List;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import MObserve.*;
+
 /**
- * basic classifier incubator
+ * Incubator with reroll, I am aware this is a huge code smell but I am short on time so
  * @author Mathieu
  *
  */
-public class ClassifierIncubator extends Observable<CIInfo> implements REIncubator<ArrayList<Float>,ArrayList<Boolean>>{
+
+public class RerollCI extends Observable<CIInfo> implements REIncubator<ArrayList<Float>,ArrayList<Boolean>>{
 	private final float DEFAULT_MUTATION_RATE = 1.0f;
 	private final int DEFAULT_POPULATION_SIZE = 64;
 	private final int DEFAULT_LEAF_CAP= 64;	//TODO: fix this ugly hack fix
@@ -23,19 +25,19 @@ public class ClassifierIncubator extends Observable<CIInfo> implements REIncubat
 	private GeneticMutator<ArrayList<Float>,ArrayList<Boolean>> mutator;
 	private GeneticShuffler<ArrayList<Float>,ArrayList<Boolean>> gShuffler;
 	
-	public ClassifierIncubator(){
+	public RerollCI(){
 		setMutationRate(DEFAULT_MUTATION_RATE);
 		setPopulationSize(DEFAULT_POPULATION_SIZE);
 		evaluator = new REEvaluator<ArrayList<Float>,ArrayList<Boolean>>();
 	}
 	
-	public ClassifierIncubator(float mutationRate){
+	public RerollCI(float mutationRate){
 		setMutationRate(mutationRate);
 		setPopulationSize(DEFAULT_POPULATION_SIZE);
 		evaluator = new REEvaluator<ArrayList<Float>,ArrayList<Boolean>>();
 	}
 	
-	public ClassifierIncubator(int populationSize, float mutationRate){
+	public RerollCI(int populationSize, float mutationRate){
 		setMutationRate(mutationRate);
 		setPopulationSize(populationSize);
 		evaluator = new REEvaluator<ArrayList<Float>,ArrayList<Boolean>>();
@@ -105,7 +107,7 @@ public class ClassifierIncubator extends Observable<CIInfo> implements REIncubat
 		
 		float fitnessBuffer;
 		
-		while (nextGen.size() < populationSize){							//WARNING: only works for even number populations coz needs 2 parents
+		while (nextGen.size() < populationSize - 2){							//WARNING: only works for even number populations coz needs 2 parents
 			parent1Data = lastGen.remove(0);
 			parent2Data = lastGen.remove(0);
 			parent1 = parent1Data.getAgent();
@@ -128,6 +130,13 @@ public class ClassifierIncubator extends Observable<CIInfo> implements REIncubat
 			
 			nextGen.add(new EvaluationEntry<Classifier,Float>(child2,fitnessBuffer));
 		}
+		
+		Classifier newCommer = generator.generateRandom();
+		nextGen.add(new EvaluationEntry<Classifier,Float>(newCommer, evaluator.evaluate(newCommer,ld)));
+
+		newCommer = generator.generateRandom();
+		nextGen.add(new EvaluationEntry<Classifier,Float>(newCommer, evaluator.evaluate(newCommer,ld)));
+		
 		return nextGen;
 	}
 	

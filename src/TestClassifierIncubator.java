@@ -32,12 +32,12 @@ public class TestClassifierIncubator {
 	public void test() {
 		int leafCap = 25;
 		int populationSize = 64;
-		float mutationRate = 2.0f;
+		float mutationRate = 5.0f;
 		float treshold = 0.95f;
 		File learningData = new File(LEARNING_DATA_PATH);
 		assertTrue(learningData.exists());
 		
-		ClassifierIncubator incubator = new ClassifierIncubator();
+		RerollCI incubator = new RerollCI();
 		incubator.addObserver(new CIObserver());
 		
 		Classifier potatowedge = incubator.generateReasoningEngine(leafCap, populationSize, mutationRate, learningData, treshold);
