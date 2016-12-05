@@ -15,7 +15,7 @@ public class RerollCI extends Observable<CIInfo> implements REIncubator<ArrayLis
 	private final float DEFAULT_MUTATION_RATE = 1.0f;
 	private final int DEFAULT_POPULATION_SIZE = 64;
 	private final int DEFAULT_LEAF_CAP= 64;	//TODO: fix this ugly hack fix
-	private final int MAX_GENERATIONS = 90000;
+	private final int MAX_GENERATIONS = 200;
 	private ClassifierGenerator generator;
 	private REEvaluator<ArrayList<Float>,ArrayList<Boolean>> evaluator;
 	private float mutationRate;
