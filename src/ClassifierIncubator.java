@@ -1,9 +1,10 @@
 import java.io.File;
+import java.util.List;
 import java.util.ArrayList;
-import java.util.Observable;
 import java.io.FileNotFoundException;
+import MObserve.*;
 
-public class ClassifierIncubator extends Observable implements REIncubator<ArrayList<Float>,ArrayList<Boolean>>{
+public class ClassifierIncubator extends Observable<CIInfo> implements REIncubator<ArrayList<Float>,ArrayList<Boolean>>{
 	private final float DEFAULT_MUTATION_RATE = 1.0f;
 	private final int DEFAULT_POPULATION_SIZE = 64;
 	private final int DEFAULT_LEAF_CAP= 64;	//TODO: fix this ugly hack fix
@@ -65,19 +66,17 @@ public class ClassifierIncubator extends Observable implements REIncubator<Array
 		gShuffler = new AntTrailGS();
 		
 		int counter = 0;
+		
+		this.notifyObservers(new CIInfo(populationData,counter));
+		
 		while(!pass(populationData.getFirst().getScore())){
 			if (counter >= MAX_GENERATIONS){
-				System.out.println("BREAK");//DEBUG
 				break;
 			}
-			System.out.println(populationData.getFirst());
 			populationData = nextGeneration(populationData, ld);
-			System.out.println("NEW GEN: " + populationData);//DEBUG
 			counter ++;
+			this.notifyObservers(new CIInfo(populationData,counter));
 		}
-
-		System.out.println("GENERATIONS NEEDED: " + counter);
-		System.out.println(populationData.getFirst());
 		return populationData.getFirst().getAgent();
 	}
 	
@@ -102,22 +101,17 @@ public class ClassifierIncubator extends Observable implements REIncubator<Array
 		
 		float fitnessBuffer;
 		
-		while (nextGen.size() < populationSize){							//WARNING: only works for even number populations coz needs 2 parents
-			System.out.println(nextGen.size()+" : " + populationSize);//DEBUG
+		while (nextGen.size() < populationSize - 2){							//WARNING: only works for even number populations coz needs 2 parents
 			parent1Data = lastGen.remove(0);
 			parent2Data = lastGen.remove(0);
 			parent1 = parent1Data.getAgent();
 			parent2 = parent2Data.getAgent();
 			
-			System.out.println("PARENTS : " + parent1 + " , " + parent2);//DEBUG
-			System.out.println("shuffle");
 			childrenGhosts = gShuffler.shuffle(parent1.getDecisionTree(),parent2.getDecisionTree());
-			System.out.println("done");
 			
 			child1 = new Classifier(childrenGhosts.getFirstChild());
 			fitnessBuffer = evaluator.evaluate(child1, ld);
 			child1.setDecisionTree(mutator.mutate(childrenGhosts.getFirstChild(),(1.0f -fitnessBuffer)*mutationRate));
-			System.out.println("FITNESS: " + fitnessBuffer);//DEBUG
 			
 			nextGen.add(new EvaluationEntry<Classifier,Float>(child1,fitnessBuffer));
 			
@@ -127,10 +121,8 @@ public class ClassifierIncubator extends Observable implements REIncubator<Array
 			child2 = new Classifier(childrenGhosts.getSecondChild());
 			fitnessBuffer = evaluator.evaluate(child2, ld);
 			child2.setDecisionTree(mutator.mutate(childrenGhosts.getSecondChild(),(1.0f -fitnessBuffer)*mutationRate));
-			System.out.println("FITNESS: " + fitnessBuffer);//DEBUG
 			
 			nextGen.add(new EvaluationEntry<Classifier,Float>(child2,fitnessBuffer));
-			System.out.println("CHILDREN : " + child1 + " , " + child2);//DEBUG
 		}
 		
 		Classifier newCommer = generator.generateRandom();

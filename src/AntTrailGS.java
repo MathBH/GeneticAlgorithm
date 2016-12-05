@@ -30,9 +30,6 @@ public class AntTrailGS<P,C> implements GeneticShuffler<P,C>{
 				trail1.get(idx1-1).setNoNode(trail2.get(idx2));
 			else{
 				System.err.println("Uhm, it wasn't the no node or the yes node???");
-				System.out.println(trail1.get(idx1-1).getYesNode());//DEBUG
-				System.out.println(trail1.get(idx1-1).getNoNode());//DEBUG
-				System.out.println(trail1.get(idx1));//DEBUG
 				return null;
 			}
 			ghost1 = trail1.get(0);
@@ -47,9 +44,6 @@ public class AntTrailGS<P,C> implements GeneticShuffler<P,C>{
 				trail2.get(idx2-1).setNoNode(trail1.get(idx1));
 			else{
 				System.err.println("Uhm, it wasn't the no node or the yes node???");
-				System.out.println(trail1.get(idx1-1).getYesNode());//DEBUG
-				System.out.println(trail1.get(idx1-1).getNoNode());//DEBUG
-				System.out.println(trail1.get(idx1));//DEBUG
 				return null;
 			}
 			ghost2 = trail2.get(0);

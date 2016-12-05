@@ -38,6 +38,7 @@ public class TestClassifierIncubator {
 		assertTrue(learningData.exists());
 		
 		ClassifierIncubator incubator = new ClassifierIncubator();
+		incubator.addObserver(new CIObserver());
 		
 		Classifier potatowedge = incubator.generateReasoningEngine(leafCap, populationSize, mutationRate, learningData, treshold);
 		
