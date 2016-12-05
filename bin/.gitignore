@@ -77,3 +77,7 @@
 /FloatScoreHandler.class
 /ClassifierEvaluator.class
 /RerollCI.class
+/Experiment.class
+/Experiment/
+/Evolver.class
+/GA/
