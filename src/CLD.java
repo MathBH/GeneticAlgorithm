@@ -1,8 +1,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CLD implements DataShell<ClassifierEx>{
+public class CLD implements DataShell<Example<ArrayList<Float>,ArrayList<Boolean>>>{
 
 	private File srcFile;
 	private int numAttrs;
@@ -22,7 +23,7 @@ public class CLD implements DataShell<ClassifierEx>{
 		scan.close();
 	}
 	
-	public DataSetReader<ClassifierEx> getReader() {
+	public DataSetReader<Example<ArrayList<Float>,ArrayList<Boolean>>> getReader() {
 		try {
 			return new CLDReader(srcFile);
 		} catch (FileNotFoundException e) {

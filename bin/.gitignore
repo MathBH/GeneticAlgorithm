@@ -67,3 +67,11 @@
 /MObserve/
 /CIInfo.class
 /CIObserver.class
+/REEResult.class
+/REEObserver.class
+/CEObserver.class
+/FloatScoreObserver.class
+/FitnessScore.class
+/FloatScore.class
+/FloatScoreHandeler.class
+/FloatScoreHandler.class

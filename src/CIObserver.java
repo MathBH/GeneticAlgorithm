@@ -6,7 +6,7 @@ public class CIObserver implements Observer<CIInfo>{
 	public void notify(CIInfo info){
 		
 		FloatDataSet scoreData = compile(info.getPopulationData());
-		System.out.println(info.generationNumber + "," + "," + scoreData.getMin() + "," + scoreData.getAverage() + "," + scoreData.getMax());
+		System.out.println(info.generationNumber + "," + scoreData.getMin() + "," + scoreData.getAverage() + "," + scoreData.getMax());
 	}
 	
 	private FloatDataSet compile(List<EvaluationEntry<Classifier,Float>> data){

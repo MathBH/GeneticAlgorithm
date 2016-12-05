@@ -10,7 +10,7 @@ public class ClassifierIncubator extends Observable<CIInfo> implements REIncubat
 	private final int DEFAULT_LEAF_CAP= 64;	//TODO: fix this ugly hack fix
 	private final int MAX_GENERATIONS = 90000;
 	private ClassifierGenerator generator;
-	private REEvaluator evaluator;
+	private REEvaluator<ArrayList<Float>,ArrayList<Boolean>> evaluator;
 	private float mutationRate;
 	
 	private float treshold;
@@ -22,19 +22,19 @@ public class ClassifierIncubator extends Observable<CIInfo> implements REIncubat
 	public ClassifierIncubator(){
 		setMutationRate(DEFAULT_MUTATION_RATE);
 		setPopulationSize(DEFAULT_POPULATION_SIZE);
-		evaluator = new REEvaluator();
+		evaluator = new REEvaluator<ArrayList<Float>,ArrayList<Boolean>>();
 	}
 	
 	public ClassifierIncubator(float mutationRate){
 		setMutationRate(mutationRate);
 		setPopulationSize(DEFAULT_POPULATION_SIZE);
-		evaluator = new REEvaluator();
+		evaluator = new REEvaluator<ArrayList<Float>,ArrayList<Boolean>>();
 	}
 	
 	public ClassifierIncubator(int populationSize, float mutationRate){
 		setMutationRate(mutationRate);
 		setPopulationSize(populationSize);
-		evaluator = new REEvaluator();
+		evaluator = new REEvaluator<ArrayList<Float>,ArrayList<Boolean>>();
 	}
 	
 	public Classifier generateReasoningEngine(int leafCap, int populationSize, float mutationRate, File ldFile, float treshold){

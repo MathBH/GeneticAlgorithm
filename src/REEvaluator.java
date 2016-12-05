@@ -1,6 +1,7 @@
 import java.io.File;
+import MObserve.*;
 
-public class REEvaluator<P,C> {
+public class REEvaluator<P,C> extends Observable<REEResult<C>>{
 	private DataSetReader<Example<P,C>> ldReader;
 	
 	public float evaluate(ReasoningEngine<P,C> agent, DataShell<Example<P,C>> data){
@@ -22,6 +23,7 @@ public class REEvaluator<P,C> {
 	
 	boolean pass(ReasoningEngine<P,C> agent, Example<P,C> test){ //open for testing
 		C aConclusion = agent.concludeFrom(test.getPremise());
+		this.notifyObservers(new REEResult<C>(aConclusion, test.getConclusion()));
 		return aConclusion.equals(test.getConclusion());
 	}
 }

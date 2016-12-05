@@ -50,14 +50,13 @@ public class TestClassifierIncubator {
 			fail();
 		}
 		
-		DataSetReader<ClassifierEx> reader = cld.getReader();
+		REEvaluator eval = new REEvaluator();
+		FloatScoreHandler scoreHandler = new FloatScoreHandler();
 		
-		while (reader.hasNext()){
-			ClassifierEx test = reader.next();
-			System.out.println("Test: "+test);
-			System.out.println("AI answer: "+ potatowedge.concludeFrom(test.getPremise()));
-			System.out.println("Correct answer: "+ test.getConclusion());
-		}
+		eval.addObserver(new CEObserver());
+		scoreHandler.addObserver(new FloatScoreObserver());
+		
+		scoreHandler.updateScore(eval.evaluate(potatowedge, cld));
 		//printDecisionTree(drClassy.getDecisionTree());
 	}
 	

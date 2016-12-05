@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class CLDReader extends DataSetReader<ClassifierEx>{
+public class CLDReader extends DataSetReader<Example<ArrayList<Float>,ArrayList<Boolean>>>{
 	private final String ERR_NUMBER_FORMAT = "Number format error at ";
 	private final String NUM_ATTR = "num attributes.";
 	private final String NUM_CLASS = "num classes.";
