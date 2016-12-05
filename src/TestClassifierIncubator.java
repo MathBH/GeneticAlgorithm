@@ -42,33 +42,13 @@ public class TestClassifierIncubator {
 		
 		Classifier potatowedge = incubator.generateReasoningEngine(leafCap, populationSize, mutationRate, learningData, treshold);
 		
-		CLD cld = null;
-		
-		try {
-			cld = new CLD(learningData);
-		} catch (FileNotFoundException e) {
-			fail();
-		}
-		
-		REEvaluator eval = new REEvaluator();
+		ClassifierEvaluator eval = new ClassifierEvaluator();
 		FloatScoreHandler scoreHandler = new FloatScoreHandler();
 		
 		eval.addObserver(new CEObserver());
 		scoreHandler.addObserver(new FloatScoreObserver());
 		
-		scoreHandler.updateScore(eval.evaluate(potatowedge, cld));
-		//printDecisionTree(drClassy.getDecisionTree());
-	}
-	
-	private void printDecisionTree(DecisionTree dt){
-		if (dt == null)
-			return;
-		System.out.print(dt);
-		if (dt.hasChildren())
-			System.out.print(": [" + dt.getNoNode() + ", " + dt.getYesNode() + "]");
-		System.out.println();
-		printDecisionTree(dt.getNoNode());
-		printDecisionTree(dt.getYesNode());
+		scoreHandler.score(eval.evaluate(potatowedge, learningData));
 	}
 
 }

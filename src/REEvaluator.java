@@ -1,4 +1,6 @@
 import java.io.File;
+import java.io.FileNotFoundException;
+
 import MObserve.*;
 
 public class REEvaluator<P,C> extends Observable<REEResult<C>>{

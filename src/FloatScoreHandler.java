@@ -8,7 +8,7 @@ public class FloatScoreHandler extends Observable<Float>{
 		return this.score;
 	}
 	
-	public void updateScore(float score){
+	public void score(float score){
 		this.score = score;
 		this.notifyObservers(score);
 	}
