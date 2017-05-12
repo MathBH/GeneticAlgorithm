@@ -1,4 +1,4 @@
-# GeneticAlgorithm for classification                                                                         
+# Genetic Algorithm for Classification                                                                         
 # by Mathieu Belzile-Ha
 
       CONTENT:
