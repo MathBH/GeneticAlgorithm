@@ -1,6 +1,5 @@
-# GeneticAlgorithm for classification                                                                         Mathieu Belzile-Ha
-                                                             README                                                       
---------------------------------------------------------------------------------------------------------------------------------
+# GeneticAlgorithm for classification                                                                         
+# by Mathieu Belzile-Ha
 
       CONTENT:
       -------
