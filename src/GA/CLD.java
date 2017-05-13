@@ -4,6 +4,14 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Classifier Learning Data
+ * @author Mathieu
+ *
+ * Learning Data specifically for Classifier Reasoning Engines.
+ *
+ */
+
 public class CLD implements DataShell<Example<ArrayList<Float>,ArrayList<Boolean>>>{
 
 	private File srcFile;

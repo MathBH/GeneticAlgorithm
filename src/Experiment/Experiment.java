@@ -20,15 +20,13 @@ public class Experiment {
 	private static String RESULTS_5 = "results5/";
 	private static String RESULTS_6 = "results6/";
 	private static String RESULTS_7 = "results7/";
-	private static String RESULTS_8 = "results8/";
-	private static String RESULTS_9 = "results9/";
 	private static String[] RESULTS = {RESULTS_1, RESULTS_2, RESULTS_3,
 										RESULTS_4, RESULTS_5, RESULTS_6,
-										RESULTS_7, RESULTS_8, RESULTS_9};
+										RESULTS_7};
 	
-	private static final String BASIC_INCUBATOR = "basicIncubator/";
+	private static final String STANDARD_INCUBATOR = "basicIncubator/";
 	private static final String REROLL_INCUBATOR = "rerollIncubator/";
-	private static final String[] INCUBATOR_NAMES = {BASIC_INCUBATOR, REROLL_INCUBATOR};
+	private static final String[] INCUBATOR_NAMES = {STANDARD_INCUBATOR, REROLL_INCUBATOR};
 	
 	private static final String FITNESS_FILE = "fitness.txt";
 	private static final String CONFUSION_MATRIX = "confusion.txt";
@@ -127,12 +125,12 @@ public class Experiment {
 	 * @param fileFolder: name of the data to be experimented on
 	 */
 	private static void runExperiment(int leafCap, int populationSize, float mutationRate, String dataName, float treshold){
-		System.err.println("EXPERIMENT: " + dataName);
+		System.err.println("DATA SET: " + dataName);
 		/**
 		 * pipe to basic incubator fitness over time file.
 		 */
-		System.err.println("FITNESS: BI");
-		pipeOutput(SRC + results + dataName + "/" + BASIC_INCUBATOR + FITNESS_FILE);
+		System.err.println("FITNESS: SI");
+		pipeOutput(SRC + results + dataName + "/" + STANDARD_INCUBATOR + FITNESS_FILE);
 		
 		File trainingData = new File(SRC + dataName + "/" + TRAINING_DATA);
 		Classifier bclassifier = basicIncubator.generateReasoningEngine(leafCap, populationSize, mutationRate, trainingData, treshold);
@@ -147,8 +145,8 @@ public class Experiment {
 		/**
 		 * pipe to confusion matrix file for basic
 		 */
-		System.err.println("CONFUSION: BI");
-		pipeOutput(SRC + results + dataName + "/" + BASIC_INCUBATOR + CONFUSION_MATRIX);
+		System.err.println("CONFUSION: SI");
+		pipeOutput(SRC + results + dataName + "/" + STANDARD_INCUBATOR + CONFUSION_MATRIX);
 		
 		File testingData = new File(SRC + dataName + "/" + TESTING_DATA);
 		float bscore = evaluator.evaluate(bclassifier, testingData);
@@ -161,16 +159,17 @@ public class Experiment {
 		float rscore = evaluator.evaluate(rrclassifier, testingData);
 		
 
-		System.err.println("Scoring");
 		/**
 		 * pipe to score for basic
 		 */
-		pipeOutput(SRC + results + dataName + "/" + BASIC_INCUBATOR + TEST_SCORE);
+		System.err.println("SCORING: SI");
+		pipeOutput(SRC + results + dataName + "/" + STANDARD_INCUBATOR + TEST_SCORE);
 		scoreHandler.score(bscore);
 
 		/**
 		 * pipe to score for reroll
 		 */
+		System.err.println("SCORING: RI");
 		pipeOutput(SRC + results + dataName + "/" + REROLL_INCUBATOR + TEST_SCORE);
 		scoreHandler.score(rscore);
 	}

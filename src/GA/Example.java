@@ -1,5 +1,17 @@
 package GA;
 
+/**
+ * 
+ * @author Mathieu
+ *
+ * Examples are used by Reasoning Engines to learn something.
+ * They are examples of a situation where a conclusion "C" follows
+ * from a premise "P".
+ *
+ * @param <P> Premise
+ * @param <C> Conclusion
+ */
+
 public class Example <P,C>{
 
 	private P premise;
