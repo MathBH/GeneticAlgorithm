@@ -12,39 +12,39 @@
       --------
               The following was written as part of a project to study the performance of a machine learning program.
               This program is an AI that learns to classify objects in reference to numerical representations of their
-			  attributes. The code was written in reference to standard Genetic Algorithms.
+	      attributes. The code was written in reference to standard Genetic Algorithms.
 			  
-			  Saying the AI "learns" in this case is not exactly correct. We might instead say that the AI is "grown"
-			  in an Incubator.
+              Saying the AI "learns" in this case might not be the best metaphor. We might instead say that the AI is "grown"
+	      in an Incubator.
+		  
+	      The way the AI is grown is by putting a list of examples of numerical values and what category the thing
+	      they belong to should fall in.
 			  
-			  The way the AI is grown is by putting a list of examples of numerical values and what category the thing
-			  they belong to should fall in.
+	      The Incubator, in the first generation, generates a bunch of AIs at random.
 			  
-			  The Incubator, in the first generation, generates a bunch of AIs at random.
+	      Then, for each generation, the AIs attempt to classify the objects given the numerical inputs. The highest
+	      performing ones will usually have their data intermixed into two new AIs. These two AIs are usually 
+	      aslo mutated at random.
 			  
-			  Then, for each generation, the AIs attempt to classify the objects given the numerical inputs. The highest
-			  performing ones will usually have their data intermixed into two new AIs. These two AIs are usually 
-			  aslo mutated at random.
+	      This process is repeated until the highest performing AI is of satisfactory performance.
 			  
-			  This process is repeated until the highest performing AI is of satisfactory performance.
-			  
-			  For this project, two Incubators were built: the "Standard" Incubator and the 'Reroll" Incubator.
+	      For this project, two Incubators were built: the "Standard" Incubator and the 'Reroll" Incubator.
 			  
                       Standard Incubator:
                       -------------------
                                         The Standard Incubator grows the AI in standard Genetic Algorithm tradition.
-										That is to say, it first generates a population at random, it tests their
-										performance, intermixes the data of the two highest performing AIs and
-										mutates them a little, and creates a new generation of AIs where the
-										population is the same only with the two highest performers replaced with
-										their children.
+					That is to say, it first generates a population at random, it tests their
+					performance, intermixes the data of the two highest performing AIs and
+					mutates them a little, and creates a new generation of AIs where the
+					population is the same only with the two highest performers replaced with
+					their children.
 										
-					Reroll Incubator:
-					-----------------
-										The Reroll Incubator grows the AI exactly the same as the Standard Incubator except
-										that, at every generation, after mixing the algorithms of the two highest performing
-										AIs, it will also discard the two lowest performing AIs and replace them with newly
-										randomly generated AIs.
+		      Reroll Incubator:
+		      -----------------
+					The Reroll Incubator grows the AI exactly the same as the Standard Incubator except
+					that, at every generation, after mixing the algorithms of the two highest performing
+					AIs, it will also discard the two lowest performing AIs and replace them with newly
+					randomly generated AIs.
               
 --------------------------------------------------------------------------------------------------------------------------------
 
