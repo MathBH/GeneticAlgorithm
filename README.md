@@ -153,14 +153,12 @@
 									    .
 									    
 									
-					- "fitnes.txt" :	This contains a column of 4 comma seperated numbers.
-																			The first is the generation number, the three others
-																			are the top 3 fitnesses in that given generation.
-																			
-														- "score.txt" :		This contains the fitness score of the final generated
-																			AI.
-
-			
+					- "fitnes.txt" :	This contains a column of 4 comma seperated numbers. The first is the
+								generation number, the three others are the top 3 fitnesse scores in
+								that generation.
+					
+					- "score.txt" :		This contains the fitness score of the final generated AI.
+					
 		
 		Observation notes:
 		------------------
