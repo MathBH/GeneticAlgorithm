@@ -163,61 +163,58 @@
 		Observation notes:
 		------------------
 		
-			Here is a summary of what I have observed so far:
-      
-		I have left the Experiment class so that those who are curious may witness the AI at work for themselves.
-				Be advised that the experiment can take over an hour to complete. A FAQ is provided bellow explaining how to
-				run the experiment and what the output data means.
+				It looks like the Reroll Incubator is in part an improvement on the Standard Incubator.
+						
+				A benefit is that, in cases where all AIs in a generation are performing poorly, the Reroll Incubator's
+				higher entropy comes in handy as it allows for rapid change as opposed to the Standard Incubator that
+				relies on only mutations. The result is visible when we look at the fitness over time data as AIs
+				grown in the Reroll Incubator as these score can rapidly fluxtuate.
+						
+				The downfall of Reroll is now evident as this fluctuation can also work against it. In theory, we would
+				think that, since only the lowest performing AIs would be replaced with a randomly generated AI, it
+				could not harm the fitness of its population since its best algorithms will not be touched. However,
+				should a mutation occur which significantly reduces the highest performing AI's performance, it will
+				be removed in the next generation. The reason this can be bad is that, even poorly performing AIs may
+				have parts of their algorithms that would be very beneficial when intermixed with other strong AIs'
+				algorithms. This likelyhood is increased when the poorly performing AI was once the highest performing.
+						
+				We see this happen when we track the fitness over time for the Reroll Incubator. Sometimes, the final AI
+				produced has a fitness score of around 0.33, whereas durring incubation, the three highest performing 
+				AIs had scores of around 0.8.
+						
+				When looking at the fitness over time of the Standard Incubator, it is much more stable and progressive.
+				It worth noting that, while the Reroll Incubator successfully grows the AI more often, inreference to
+				the fitness over time, it often seems to do so "out of the blue". I say this because the top fitnesss
+				scores before it are sometimes very low, if not fluctuating in a way that is not very discerneable from
+				the rest of the fluctuations. It gives the impression that sometimes the Reroll Incubator just works out
+				of luck. This might not be entirely the case as surely worthy algorithm pieces are preserved, though it
+				I get the impression that the difference boils down to the Standard Incubator getting one "dice throw"
+				and the Reroll Incubator getting many, so to speak.
 				
-				For those who do not want to spend that time, here is a brief synopsis of what results the experiment yielded:
+				In cases where leaf counts are smaller, the confusion matrix also show a greater ease for AIs grown with
+				the Reroll Incubator to make complex assessments.
 				
-						It looks like the Reroll Incubator is in part an improvement on the Standard Incubator.
-						
-						A benefit is that, in cases where all AIs in a generation are performing poorly, the Reroll Incubator's
-						higher entropy comes in handy as it allows for rapid change as opposed to the Standard Incubator that
-						relies on only mutations. The result is visible when we look at the fitness over time data as AIs
-						grown in the Reroll Incubator as these score can rapidly fluxtuate.
-						
-						The downfall of Reroll is now evident as this fluctuation can also work against it. In theory, we would
-						think that, since only the lowest performing AIs would be replaced with a randomly generated AI, it
-						could not harm the fitness of its population since its best algorithms will not be touched. However,
-						should a mutation occur which significantly reduces the highest performing AI's performance, it will
-						be removed in the next generation. The reason this can be bad is that, even poorly performing AIs may
-						have parts of their algorithms that would be very beneficial when intermixed with other strong AIs'
-						algorithms. This likelyhood is increased when the poorly performing AI was once the highest performing.
-						
-						We see this happen when we track the fitness over time for the Reroll Incubator. Sometimes, the final AI
-						produced has a fitness score of around 0.33, whereas durring incubation, the three highest performing AIs
-						had scores of around 0.8.
-						
-						When looking at the fitness over time of the Standard Incubator, it is much more stable and progressive.
-						It worth noting that, while the Reroll Incubator successfully grows the AI more often, inreference to
-						the fitness over time, it often seems to do so "out of the blue". I say this because the top fitnesss
-						scores before it are sometimes very low, if not fluctuating in a way that is not very discerneable from
-						the rest of the fluctuations. It gives the impression that sometimes the Reroll Incubator just works out
-						of luck. This might not be entirely the case as surely worthy algorithm pieces are preserved, though it
-						I get the impression that the difference boils down to the Standard Incubator getting one "dice throw"
-						and the Reroll Incubator getting many, so to speak.
-						
-						In cases where leaf counts are smaller, the confusion matrix also show a greater ease for AIs grown with
-						the Reroll Incubator to make complex assessments.
-						
-						Reroll Incubators also seem to fair better with higher mutation than its Standard counter part. This might
-						be because, given a bad mutation, it can easily replace it, whereas the Standard Incubator is stuck with it.
-						However, it is interesting that more, or rather, a different kind of entropy helps the Incubator deal with
-						mutation entropy. It suggests that kinds of entropies need to be considered as opposed to simply "entropy"
-						when designing an incubator.
-						
-						The conclusion I draw from these results is that the Reroll Incubator shows improvements in some specific
-						facets of the learning process. That being said, it may benefit from the progressive aspects of the
-						Standard Incubator. The reason is that, should it never reach the fitness score that ends incubation, it
-						may loose an AI that had a high fitness none the less. A potential remedy would be to try to make an
-						incubator that works at keeping the hight performing AIs as backup and only replace them if newly generated
-						ones are higher in performance. Moreover, perhaps some way of having an AI's ancestry affect its elimination
-						would also be helpful. Or perhaps assessment not only of the whole of its algorithm but also parts of it.
-						
-						In regards to the structure of the decision trees, I think these too played a role in the AIs' performances.
-						The decision trees are only built to consider ">", "<", or "=" relationships. Data sets like the Spiral data
-						- and potentially the glass data set - I suspect need ratio relationships for the AI to properly reason
-						around them. As such, the tree would have to be updated for this and potentially other multi-dimensional
-						relationships.
+				Reroll Incubators also seem to fair better with higher mutation than its Standard counter part. This
+				might be because, given a bad mutation, it can easily replace it, whereas the Standard Incubator is 
+				stuck with it.
+				
+				However, it is interesting that more, or rather, a different kind of entropy helps the Incubator deal
+				with mutation entropy. It suggests that kinds of entropies need to be considered as opposed to simply
+				"entropy" when designing an incubator.
+				
+				The conclusion I draw from these results is that the Reroll Incubator shows improvements in some
+				specific facets of the learning process. That being said, it may benefit from the progressive aspects of
+				the Standard Incubator. The reason is that, should it never reach the fitness score that ends
+				incubation, it may loose an AI that had a high fitness none the less. A potential remedy would be to try
+				to make an incubator that works at keeping the hight performing AIs as backup and only replace them if
+				newly generated ones are higher in performance. Moreover, perhaps some way of having an AI's ancestry
+				affect its elimination would also be helpful. Or perhaps assessment not only of the whole of 
+				algorithm but also parts of it.
+				
+				In regards to the structure of the decision trees, I think these too played a role in the AIs'
+				performances.
+				
+				The decision trees are only built to consider ">", "<", or "=" relationships. Data sets like the Spiral
+				data - and potentially the glass data set - I suspect need ratio relationships for the AI to properly
+				reason around them. As such, the tree would have to be updated for this and potentially other multi
+				dimensional relationships.
