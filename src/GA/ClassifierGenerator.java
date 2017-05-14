@@ -23,6 +23,13 @@ public class ClassifierGenerator {
 		setDataParamaters(numAttr,numClass);
 	}
 	
+	/**
+	 * 
+	 * Set what kind of data this classifier will have to be dealing with.
+	 * 
+	 * @param numAttr number of attributes
+	 * @param numClass number of classifications
+	 */
 	public void setDataParamaters(int numAttr, int numClass){
 		this.numAttr = numAttr;
 		this.numClass = numClass;
@@ -36,6 +43,10 @@ public class ClassifierGenerator {
 		this.decisionTreeGenerator.setLeafCap(leafCap);
 	}
 	
+	/**
+	 * Generate a random Classifier
+	 * @return random Classifier
+	 */
 	public Classifier generateRandom(){
 		if (decisionTreeGenerator == null)
 			return null;
@@ -44,6 +55,11 @@ public class ClassifierGenerator {
 		return cl;
 	}
 	
+	/**
+	 * Generate a random Classifier with a set number of leaves.
+	 * @param numLeaves
+	 * @return random Classifier
+	 */
 	public Classifier generateRandom(int numLeaves){
 		if (decisionTreeGenerator == null)
 			return null;

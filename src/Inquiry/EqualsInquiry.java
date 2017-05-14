@@ -1,4 +1,14 @@
 package Inquiry;
+
+/**
+ * Equals Inquiry
+ * @author Mathieu
+ *
+ * Asks if a given input of type E is equal to private value criteria.
+ *
+ * @param <E>
+ */
+
 public class EqualsInquiry<E extends Comparable> implements ValInquiry<E>{
 	private E criteria;
 	

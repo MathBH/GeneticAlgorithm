@@ -25,13 +25,13 @@ public class TestFileInquirer {
 	@After
 	public void tearDown() throws Exception {
 	}
-
+/*
 	@Test
 	public void test() {
 		FileInquirer inquirer = new FileInquirer(new FileInquirerView());
 		FileInquirerController controller = new FileInquirerController(inquirer);
 		
 		controller.requestFile();
-	}
+	}*/ //Test requires input uncomment for testing
 
 }

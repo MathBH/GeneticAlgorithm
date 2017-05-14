@@ -48,6 +48,22 @@ public class ClassifierIncubator extends Observable<CIInfo> implements REIncubat
 		evaluator = new REEvaluator<ArrayList<Float>,ArrayList<Boolean>>();
 	}
 	
+	/**
+	 * 
+	 * Takes an ldFile (learning data) and attempts to grow a Classifier.
+	 * The threshold is used to determine the minimum success rate
+	 * required of the AI. The incubator will continue to try to
+	 * grow the AI to acheive this success rate unless MAX_GENERATIONS
+	 * is reached at which point it will stop and return its best
+	 * performing AI instead.
+	 * 
+	 * @param leafCap max leaves in Classifiers' decision trees.
+	 * @param populationSize population size per generation
+	 * @param mutationRate degree to which children will mutate
+	 * @param ldFile (learning data)
+	 * @param treshold fitness demanded of the final Classifier
+	 * @return a Classifier
+	 */
 	public Classifier generateReasoningEngine(int leafCap, int populationSize, float mutationRate, File ldFile, float treshold){
 		setPopulationSize(populationSize);
 		this.treshold = treshold;
@@ -98,7 +114,18 @@ public class ClassifierIncubator extends Observable<CIInfo> implements REIncubat
 	public void setPopulationSize(int populationSize){
 		this.populationSize = populationSize;
 	}
+
+	public void setMutationRate(float mutationRate){
+		this.mutationRate = mutationRate;
+	}
 	
+	/**
+	 * Takes in a population and returns the population for the next generation.
+	 * 
+	 * @param lastGen last generation AI list
+	 * @param ld learning data
+	 * @return
+	 */
 	private SortedList<EvaluationEntry<Classifier,Float>> nextGeneration(SortedList<EvaluationEntry<Classifier,Float>> lastGen, CLD ld){
 		SortedList<EvaluationEntry<Classifier,Float>> nextGen = new SortedList<EvaluationEntry<Classifier,Float>>();
 
@@ -138,11 +165,12 @@ public class ClassifierIncubator extends Observable<CIInfo> implements REIncubat
 		return nextGen;
 	}
 	
+	/**
+	 * Helper method tells if a given score meets the requested treshold or not.
+	 * @param score
+	 * @return true if score meets threshold
+	 */
 	private boolean pass(float score){
 		return score >= this.treshold;
-	}
-	
-	public void setMutationRate(float mutationRate){
-		this.mutationRate = mutationRate;
 	}
 }

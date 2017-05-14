@@ -1,4 +1,14 @@
 package Inquiry;
+
+/**
+ * Smaller Than Inquiry
+ * @author Mathieu
+ *
+ * Asks if input of type E is smaller than the private value criteria
+ *
+ * @param <E> E input type
+ */
+
 public class SmallerThanInquiry<E extends Comparable> implements ValInquiry<E>{
 	private E criteria;
 	

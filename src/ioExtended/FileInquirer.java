@@ -7,6 +7,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * File Inquirer
+ * @author Mathieu
+ *
+ * Model portion of the File Inquirer
+ *
+ */
+
 public class FileInquirer extends Observable{
 	
 	private boolean waitingForPath;

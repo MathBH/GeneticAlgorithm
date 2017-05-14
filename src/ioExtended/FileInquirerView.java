@@ -5,6 +5,12 @@ import java.io.FileNotFoundException;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * File Inquirer View
+ * @author Mathieu
+ *
+ */
+
 public class FileInquirerView implements Observer{
 
 	private final String DELIMITER = "-----------------------------------------";

@@ -5,6 +5,15 @@ import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ * Iteration scanner
+ * @author Mathieu
+ * 
+ * Wrapper class for a Scanner that implements iterable such that
+ * the file contents can be iterated through.
+ *
+ */
+
 public class IterationScanner implements Iterable<String>{
 	private Scanner scanner;
 	

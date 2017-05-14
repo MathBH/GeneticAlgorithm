@@ -16,6 +16,10 @@ public class PushScanner {
 		scanner = new Scanner(sourceFile);
 	}
 	
+	/**
+	 * push next space separated word into the buffer
+	 * @return true if there was a next word
+	 */
 	public boolean push(){
 		if (!scanner.hasNext())
 			return false;
@@ -23,6 +27,10 @@ public class PushScanner {
 		return true;
 	}
 	
+	/**
+	 * push next line into the buffer
+	 * @return true if there was a next line
+	 */
 	public boolean pushLine(){
 		if (!scanner.hasNextLine())
 			return false;
@@ -30,6 +38,10 @@ public class PushScanner {
 		return true;
 	}
 	
+	/**
+	 * 
+	 * @return string from the buffer
+	 */
 	public String getBuffer(){
 		return this.buffer;
 	}

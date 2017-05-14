@@ -3,6 +3,12 @@ package ioExtended;
 import java.io.File;
 import java.util.Scanner;
 
+/**
+ * File Inquirer Controller
+ * @author Mathieu
+ *
+ */
+
 public class FileInquirerController {
 	private Scanner scanner;
 	private FileInquirer inquirer;

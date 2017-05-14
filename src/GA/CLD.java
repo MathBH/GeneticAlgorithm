@@ -24,15 +24,9 @@ public class CLD implements DataShell<Example<ArrayList<Float>,ArrayList<Boolean
 		scanProperties();
 	}
 	
-	private void scanProperties() throws FileNotFoundException{
-		Scanner scan = new Scanner(srcFile);
-		
-		numAttrs = scan.nextInt();
-		numClass = scan.nextInt();
-		
-		scan.close();
-	}
-	
+	/**
+	 * returns a data reader for this learning data
+	 */
 	public DataSetReader<Example<ArrayList<Float>,ArrayList<Boolean>>> getReader() {
 		try {
 			return new CLDReader(srcFile);
@@ -49,6 +43,20 @@ public class CLD implements DataShell<Example<ArrayList<Float>,ArrayList<Boolean
 	
 	public int getNumClass(){
 		return numClass;
+	}
+
+	/**
+	 * Helper method run to obtain the number of attributes and classes of the
+	 * assigned learning data file.
+	 * @throws FileNotFoundException
+	 */
+	private void scanProperties() throws FileNotFoundException{
+		Scanner scan = new Scanner(srcFile);
+		
+		numAttrs = scan.nextInt();
+		numClass = scan.nextInt();
+		
+		scan.close();
 	}
 
 }

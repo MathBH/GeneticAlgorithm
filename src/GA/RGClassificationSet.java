@@ -9,6 +9,7 @@ import java.util.List;
  * A random generator of classification sets.
  *
  * TODO: find a better name
+ * TODO: fix the fact that "classification set" is currently synonynmous to its implementation
  */
 
 public class RGClassificationSet extends RandomGenerator<ArrayList<Boolean>>{
@@ -20,6 +21,10 @@ public class RGClassificationSet extends RandomGenerator<ArrayList<Boolean>>{
 		this.numClasses = numClasses;
 	}
 	
+	
+	/**
+	 * randomly generates a classification set (ie: a boolean value list)
+	 */
 	@Override
 	public ArrayList<Boolean> randomGenerate() {
 		ArrayList<Boolean> classificationSet = new ArrayList<Boolean>();

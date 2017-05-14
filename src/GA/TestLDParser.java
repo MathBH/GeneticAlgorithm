@@ -27,13 +27,13 @@ public class TestLDParser {
 	@After
 	public void tearDown() throws Exception {
 	}
-
+/*
 	@Test
 	public void test() {
 		CLDParser parser = new CLDParser(4,2);
 		
 		ClassifierEx ce = parser.read(new Scanner(System.in));
 		System.out.println(ce.getPremise() + " : " + ce.getConclusion());
-	}
+	}*/ //test requires input uncomment for testing
 
 }

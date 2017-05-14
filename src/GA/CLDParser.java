@@ -41,6 +41,10 @@ public class CLDParser implements DataParser<ClassifierEx>{
 			this.nClass = DEFAULT_NUM_CLASS;
 	}
 	
+	/**
+	 * returns next available Classifier Example from
+	 * the file being read by scanner s
+	 */
 	public ClassifierEx read(Scanner s){
 		if (!s.hasNextLine())
 			return null;

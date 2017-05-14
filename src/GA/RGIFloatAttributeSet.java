@@ -46,6 +46,9 @@ public class RGIFloatAttributeSet extends RGInquiry<ArrayList<Float>>{	//fix the
 		this.criteriaMax = DEFAULT_CRITERIA_MAX;
 	}
 	
+	/**
+	 * generates a random Attribute Inquiry
+	 */
 	@Override
 	public AttributeInquiry<Float> randomGenerate() {
 		
@@ -72,6 +75,12 @@ public class RGIFloatAttributeSet extends RGInquiry<ArrayList<Float>>{	//fix the
 		return new AttributeInquiry(inquiryBuffer,index);
 	}
 	
+	/**
+	 * generates a random Inquiry with a hardcoded criterion value
+	 * 
+	 * @param hardCriteria
+	 * @return
+	 */
 	public AttributeInquiry<Float> randomGenerate(float hardCriteria) {
 		
 		ValInquiry<Float> inquiryBuffer = null;
@@ -93,6 +102,13 @@ public class RGIFloatAttributeSet extends RGInquiry<ArrayList<Float>>{	//fix the
 		return new AttributeInquiry(inquiryBuffer,index);
 	}
 	
+	/**
+	 * Generate a random inquiry for which the float criterion is
+	 * somewhere in between criteriaMin and criteriaMax
+	 * @param criteriaMin
+	 * @param criteriaMax
+	 * @return random inquiry
+	 */
 	public AttributeInquiry<Float> randomGenerate(float criteriaMin, float criteriaMax) {
 		
 		ValInquiry<Float> inquiryBuffer = null;
@@ -118,6 +134,13 @@ public class RGIFloatAttributeSet extends RGInquiry<ArrayList<Float>>{	//fix the
 		return new AttributeInquiry(inquiryBuffer,index);
 	}
 	
+	/**
+	 * Helper method to randomly generate a number in between
+	 * min and max.
+	 * @param min
+	 * @param max
+	 * @return random float value between min and max
+	 */
 	private float rollForInterval(float min, float max){
 		float length = max - min;
 		if (length < 0)

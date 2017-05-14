@@ -30,6 +30,9 @@ public class ClassifierMutator implements GeneticMutator<ArrayList<Float>,ArrayL
 		dev = new Deviator();
 	}
 
+	/**
+	 * Takes in a decision tree and mutates to a degree relative to entropy.
+	 */
 	@Override
 	public DecisionTree<ArrayList<Float>, ArrayList<Boolean>> mutate(
 			DecisionTree<ArrayList<Float>, ArrayList<Boolean>> decisionTree, float entropy) {

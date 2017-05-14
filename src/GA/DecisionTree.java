@@ -68,8 +68,6 @@ public class DecisionTree<P,C>{
 			return this.getNoNode();
 	}
 	
-	//Inquiry
-	
 	public boolean hasChildren(){
 		return !(this.yesNode == null && this.noNode == null);
 	}
