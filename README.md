@@ -9,7 +9,7 @@
 --------------------------------------------------------------------------------------------------------------------------------
               
       OVERVIEW:
-      --------
+      ---------
               The following was written as part of a project to study the performance of a machine learning program. This
 	      program is an AI that learns to classify objects in reference to numerical representations of their
 	      attributes. The code was written in reference to standard Genetic Algorithms.
