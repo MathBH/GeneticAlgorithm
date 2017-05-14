@@ -2,7 +2,8 @@ package GA;
 import java.util.Random;
 /**
  * 
- * This object gives the user a boolean value by an entered probability. Probability is 0.5 by default;
+ * This object gives the user a boolean value by an entered probability. 
+ * Probability is 0.5 by default;
  * @author Mathieu
  *
  */

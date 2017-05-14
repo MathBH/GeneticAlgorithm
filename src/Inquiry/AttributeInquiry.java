@@ -5,7 +5,9 @@ import java.util.ArrayList;
  * 
  * @author Mathieu
  *
- * @param <P>
+ * @param <P> Criterion type
+ * 
+ * Inquiry that pertains to a set of attributes of type T.
  * 
  * problem that remains: no way of assuring the passed subInquiry is of the correct type for the List
  * 

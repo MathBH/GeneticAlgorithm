@@ -4,6 +4,15 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+/**
+ * Classifier Learning Data Reader
+ * @author Mathieu
+ *
+ * Class responsible for iterating over learning data and outputting
+ * their examples in ClassifierEX format.
+ *
+ */
+
 public class CLDReader extends DataSetReader<Example<ArrayList<Float>,ArrayList<Boolean>>>{
 	private final String ERR_NUMBER_FORMAT = "Number format error at ";
 	private final String NUM_ATTR = "num attributes.";

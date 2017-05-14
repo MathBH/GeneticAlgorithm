@@ -2,6 +2,18 @@ package GA;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Classifier Learning Data Parser
+ * @author Mathieu
+ * 
+ * This class takes a scanner and outputs the next example
+ * the scanner would read in a file.
+ * 
+ * It can be thought of as an extension to a Scanner so to allow it to
+ * "getNextClassifierEx".
+ *
+ */
+
 public class CLDParser implements DataParser<ClassifierEx>{
 	private final String ERR_NUMBER_VAL = "Number value error at ";
 	private final String ERR_BOOL = "ERR: Number could not be formatted to a boolean value: ";

@@ -1,6 +1,19 @@
 package GA;
 import Inquiry.Inquiry;
 
+/**
+ * Decision Tree
+ * @author Mathieu
+ * 
+ * Decision Trees are networks of nodes which allow for navigation
+ * to a conclusion of type C from a premise of type P.
+ * 
+ * Navigation of these tress is how the AIs will make decisions.
+ *
+ * @param <P>
+ * @param <C>
+ */
+
 public class DecisionTree<P,C>{
 	private C conclusion;
 	private DecisionTree<P,C> yesNode;

@@ -1,6 +1,15 @@
 package GA;
 import java.util.Random;
 
+/**
+ * Deviator
+ * @author Mathieu
+ *
+ * Class reponsible for taking a float value and randomly altering it by
+ * a given degree.
+ *
+ */
+
 public class Deviator {
 	
 	private Random random;

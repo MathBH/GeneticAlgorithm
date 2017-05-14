@@ -8,6 +8,16 @@ import Inquiry.Inquiry;
 import Inquiry.SmallerThanInquiry;
 import Inquiry.ValInquiry;
 
+/**
+ * Random Generator Inquiry Float Attribute Set
+ * @author Mathieu
+ *
+ * Generates random Inquiries for which the premises are of float type.
+ * 
+ * TODO: find better name
+ *
+ */
+
 public class RGIFloatAttributeSet extends RGInquiry<ArrayList<Float>>{	//fix the mess from ArrayList being newly added
 	
 	private final int NUM_INQUIRY_TYPES = 3;

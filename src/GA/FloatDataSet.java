@@ -1,4 +1,16 @@
 package GA;
+
+/**
+ * Float Data Set
+ * @author Mathieu
+ *
+ * An extended version of a Float value list with functions for getting
+ * the minimum, average and maximum values of said set.
+ * 
+ *  TODO: refactor to make this into just a class who's instance takes a
+ *  List<Float> and returns these values.
+ */
+
 public class FloatDataSet{
 	private SortedList<Float> data;
 	

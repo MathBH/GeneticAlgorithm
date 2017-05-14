@@ -1,7 +1,7 @@
 package GA;
 
 /**
- * 
+ * Example
  * @author Mathieu
  *
  * Examples are used by Reasoning Engines to learn something.

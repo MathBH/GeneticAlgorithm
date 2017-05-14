@@ -3,6 +3,19 @@ import java.util.ArrayList;
 
 import Inquiry.Inquiry;
 
+/**
+ * Random Generator Decision Tree
+ * @author Mathieu
+ *
+ * responsible for random generation of decision trees of premise type P and
+ * conclusion type C.
+ *
+ * @param <P> Premise type
+ * @param <C> Conclusion type
+ * 
+ * TODO: find better name
+ */
+
 public class RGDecisionTree<P,C> extends RandomGenerator<DecisionTree<P,C>>{
 
 	private final int DEFAULT_LEAF_CAP = 64;

@@ -1,5 +1,15 @@
 package GA;
 
+/**
+ * Reasoning Engine Evaluator Result
+ * @author Mathieu
+ * 
+ * Data pair holding the expected conclusion and the given AI conlusion,
+ * both of type C.
+ *
+ * @param <C> Conclusion type
+ */
+
 public class REEResult<C> {
 	private C expected;
 	private C result;

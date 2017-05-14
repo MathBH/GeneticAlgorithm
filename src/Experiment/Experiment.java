@@ -7,10 +7,14 @@ import java.io.IOException;
 
 import GA.*;
 /**
- * Project Experiment.
+ * Main Project Experiment.
  * @author Mathieu
  *
+ * This is the class that runs the whole experiment that will provide
+ * data on the AI performance when grown from different incubators.
+ *
  */
+
 public class Experiment {
 	private static final String SRC = "src/Experiment/";
 	private static String RESULTS_1 = "results1/";
@@ -50,6 +54,13 @@ public class Experiment {
 
 	private static String results;
 	
+	/**
+	 * Main
+	 * @param args
+	 * @throws FileNotFoundException
+	 * 
+	 * TODO: refactor coz ugly copy-paste code
+	 */
 	public static void main(String[] args) throws FileNotFoundException{
 		buildAllOutputFiles();
 		
@@ -63,6 +74,8 @@ public class Experiment {
 		evaluator.addObserver(new CEObserver());
 		scoreHandler.addObserver(new FloatScoreObserver());
 		
+		System.out.println("EXPERIMENT 1");
+		
 		results = RESULTS_1;
 		
 		runExperiment(64, 64, 1.0f, IRIS, 0.95f);
@@ -70,6 +83,8 @@ public class Experiment {
 		runExperiment(64, 64, 1.0f, BIMODAL, 0.95f);
 		runExperiment(64, 64, 1.0f, SPIRAL, 0.95f);
 		runExperiment(64, 64, 1.0f, GLASS, 0.95f);
+
+		System.out.println("EXPERIMENT 2");
 		
 		results = RESULTS_2;
 		
@@ -78,6 +93,8 @@ public class Experiment {
 		runExperiment(64, 64, 2.0f, BIMODAL, 0.95f);
 		runExperiment(64, 64, 2.0f, SPIRAL, 0.95f);
 		runExperiment(64, 64, 2.0f, GLASS, 0.95f);
+
+		System.out.println("EXPERIMENT 3");
 		
 		results = RESULTS_3;
 		
@@ -86,6 +103,8 @@ public class Experiment {
 		runExperiment(64, 64, 5.0f, BIMODAL, 0.95f);
 		runExperiment(64, 64, 5.0f, SPIRAL, 0.95f);
 		runExperiment(64, 64, 5.0f, GLASS, 0.95f);
+
+		System.out.println("EXPERIMENT 4");
 		
 		results = RESULTS_4;
 		
@@ -94,6 +113,8 @@ public class Experiment {
 		runExperiment(25, 64, 1.0f, BIMODAL, 0.95f);
 		runExperiment(25, 64, 1.0f, SPIRAL, 0.95f);
 		runExperiment(25, 64, 1.0f, GLASS, 0.95f);
+
+		System.out.println("EXPERIMENT 5");
 		
 		results = RESULTS_5;
 		
@@ -102,6 +123,8 @@ public class Experiment {
 		runExperiment(128, 64, 1.0f, BIMODAL, 0.95f);
 		runExperiment(128, 64, 1.0f, SPIRAL, 0.95f);
 		runExperiment(128, 64, 1.0f, GLASS, 0.95f);
+
+		System.out.println("EXPERIMENT 6");
 		
 		results = RESULTS_6;
 		
@@ -110,6 +133,8 @@ public class Experiment {
 		runExperiment(64, 10, 1.0f, BIMODAL, 0.95f);
 		runExperiment(64, 10, 1.0f, SPIRAL, 0.95f);
 		runExperiment(64, 10, 1.0f, GLASS, 0.95f);
+
+		System.out.println("EXPERIMENT 7");
 		
 		results = RESULTS_7;
 		
@@ -125,11 +150,11 @@ public class Experiment {
 	 * @param fileFolder: name of the data to be experimented on
 	 */
 	private static void runExperiment(int leafCap, int populationSize, float mutationRate, String dataName, float treshold){
-		System.err.println("DATA SET: " + dataName);
+		System.out.println("DATA SET: " + dataName);
 		/**
 		 * pipe to basic incubator fitness over time file.
 		 */
-		System.err.println("FITNESS: SI");
+		System.out.println("FITNESS: SI");
 		pipeOutput(SRC + results + dataName + "/" + STANDARD_INCUBATOR + FITNESS_FILE);
 		
 		File trainingData = new File(SRC + dataName + "/" + TRAINING_DATA);
@@ -138,14 +163,14 @@ public class Experiment {
 		/**
 		 * pipe to reroll incubator fitness over time file.
 		 */
-		System.err.println("FITNESS: RI");
+		System.out.println("FITNESS: RI");
 		pipeOutput(SRC + results + dataName + "/" + REROLL_INCUBATOR + FITNESS_FILE);
 		Classifier rrclassifier = rerollIncubator.generateReasoningEngine(leafCap, populationSize, mutationRate, trainingData, treshold);
 		
 		/**
 		 * pipe to confusion matrix file for basic
 		 */
-		System.err.println("CONFUSION: SI");
+		System.out.println("CONFUSION: SI");
 		pipeOutput(SRC + results + dataName + "/" + STANDARD_INCUBATOR + CONFUSION_MATRIX);
 		
 		File testingData = new File(SRC + dataName + "/" + TESTING_DATA);
@@ -154,7 +179,7 @@ public class Experiment {
 		/**
 		 * pipe to confusion matrix file for reroll
 		 */
-		System.err.println("CONFUSION: RI");
+		System.out.println("CONFUSION: RI");
 		pipeOutput(SRC + results + dataName + "/" + REROLL_INCUBATOR + CONFUSION_MATRIX);
 		float rscore = evaluator.evaluate(rrclassifier, testingData);
 		
@@ -162,14 +187,14 @@ public class Experiment {
 		/**
 		 * pipe to score for basic
 		 */
-		System.err.println("SCORING: SI");
+		System.out.println("SCORING: SI");
 		pipeOutput(SRC + results + dataName + "/" + STANDARD_INCUBATOR + TEST_SCORE);
 		scoreHandler.score(bscore);
 
 		/**
 		 * pipe to score for reroll
 		 */
-		System.err.println("SCORING: RI");
+		System.out.println("SCORING: RI");
 		pipeOutput(SRC + results + dataName + "/" + REROLL_INCUBATOR + TEST_SCORE);
 		scoreHandler.score(rscore);
 	}

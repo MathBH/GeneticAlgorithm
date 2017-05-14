@@ -6,9 +6,13 @@ import java.io.FileNotFoundException;
 import MObserve.*;
 
 /**
- * Incubator with reroll, I am aware this is a huge code smell but I am short on time so
+ * Incubator with Reroll.
  * @author Mathieu
- *
+ * 
+ * Like the Standard Incubator only it will replace the two lowest performing
+ * AIs with new randomly generated AIs.
+ * 
+ * TODO: fix all the code smells in this
  */
 
 public class RerollCI extends Observable<CIInfo> implements REIncubator<ArrayList<Float>,ArrayList<Boolean>>{

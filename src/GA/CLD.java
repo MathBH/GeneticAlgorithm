@@ -9,6 +9,7 @@ import java.util.Scanner;
  * @author Mathieu
  *
  * Learning Data specifically for Classifier Reasoning Engines.
+ * These are represented as pairs of a float value list and a boolean value list.
  *
  */
 

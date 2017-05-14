@@ -1,10 +1,12 @@
 package GA;
-/**
- * 
- * PROBABLY DELETE
- */
-
 import java.util.ArrayList;
+/**
+ * Classifier Generator
+ * @author Mathieu
+ * 
+ * This class is responsible for random generation of Classifier AIs.
+ *
+ */
 
 public class ClassifierGenerator {
 	private RGIFloatAttributeSet inquiryGenerator;

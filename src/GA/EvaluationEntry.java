@@ -1,5 +1,15 @@
 package GA;
 
+/**
+ * Evaluation Entry
+ * @author Mathieu
+ *
+ * A data pair holding a specific agent and a fitness score.
+ *
+ * @param <R> Reasoning Engine type
+ * @param <F> Fitness score type
+ */
+
 public class EvaluationEntry<R extends ReasoningEngine, F extends Comparable> implements Comparable<EvaluationEntry<R, F>>{
 
 	private R agent;

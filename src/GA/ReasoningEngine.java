@@ -1,6 +1,19 @@
 package GA;
 import java.util.Stack;
 
+/**
+ * Reasoning Engine
+ * @author Mathieu
+ *
+ * Objects of this class take in a premise of type P and output a conclusion of
+ * type C.
+ * 
+ * These are essentially the manifest AI one it is done learning.
+ *
+ * @param <P> Premise
+ * @param <C> Conclusion
+ */
+
 public class ReasoningEngine<P,C> {
 	private DecisionTree<P,C> decisionTree;
 	

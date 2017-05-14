@@ -1,5 +1,14 @@
 package GA;
 
+/**
+ * Classificatier Incubator Information
+ * @author Mathieu
+ * 
+ * An object that stores only the essential information for the Incubator
+ * to pass to its observer to notify it of its status.
+ *
+ */
+
 public class CIInfo {
 	SortedList<EvaluationEntry<Classifier,Float>> populationData;
 	int generationNumber;

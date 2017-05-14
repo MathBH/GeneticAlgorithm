@@ -2,6 +2,15 @@ package GA;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Random Generator Classification Set
+ * @author Mathieu
+ *
+ * A random generator of classification sets.
+ *
+ * TODO: find a better name
+ */
+
 public class RGClassificationSet extends RandomGenerator<ArrayList<Boolean>>{
 	private int numClasses;
 	private Die die;

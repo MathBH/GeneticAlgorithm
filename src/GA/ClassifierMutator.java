@@ -4,6 +4,16 @@ import java.util.ArrayList;
 import Inquiry.AttributeInquiry;
 import Inquiry.Inquiry;
 
+/**
+ * Classifier Mutator
+ * @author Mathieu
+ *
+ * Object that takes in an AI's decision tree and outputs a mutated version.
+ * 
+ * TODO: fix it to take in an AI and output a mutated AI
+ *
+ */
+
 public class ClassifierMutator implements GeneticMutator<ArrayList<Float>,ArrayList<Boolean>>{
 	private DTPathTracer tracer;
 	private RGIFloatAttributeSet attrGen;

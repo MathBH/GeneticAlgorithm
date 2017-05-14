@@ -5,8 +5,14 @@ import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import MObserve.*;
 /**
- * basic classifier incubator
+ * Standard Classifier Incubator
  * @author Mathieu
+ * 
+ * This is where the Genetic Algorithm is.
+ * Incubators are what make the AI "learn", though "grow" might be a better
+ * metaphor.
+ * 
+ * The Incubator can take in a learning data file and output a Reasoning Engine.
  *
  */
 public class ClassifierIncubator extends Observable<CIInfo> implements REIncubator<ArrayList<Float>,ArrayList<Boolean>>{
