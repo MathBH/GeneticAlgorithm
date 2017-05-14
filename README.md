@@ -31,17 +31,17 @@
 			  
 	      For this project, two Incubators were built: the "Standard" Incubator and the 'Reroll" Incubator:
 			  
-                      Standard Incubator:
-                      -------------------
+                        Standard Incubator:
+                        -------------------
 		      			The Standard Incubator grows the AI in standard Genetic Algorithm tradition.
 					That is to say, it first generates a population at random, it tests their
 					performance, intermixes the data of the two highest performing AIs and
 					mutates them a little, and creates a new generation of AIs where the
 					population is the same only with the two highest performers replaced with
 					their children.
-										
-		      Reroll Incubator:
-		      -----------------
+			
+                        Reroll Incubator:
+                        -----------------
 					The Reroll Incubator grows the AI exactly the same as the Standard Incubator except
 					that, at every generation, after mixing the algorithms of the two highest performing
 					AIs, it will also discard the two lowest performing AIs and replace them with newly
