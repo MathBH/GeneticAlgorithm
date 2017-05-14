@@ -94,7 +94,8 @@
 					     included in the experiment with anticipation that the AI will succeed in learning
 					     them. They are only there to test their limits.
 										
-			For each data set, 3 performance attributes are recorded for each Incubator:
+			For each of these rounds and each of these data sets and each Incubator, 3 performance variables are recorded:
+			"fitness over time ", "confusion matrix", and "fitness score":
 								
 					1. Fitness over time: Fitness here can be understood as synonymous to "performance".
 					   Fitness over time is bassically measured as the 3 highest fitnesses in an AI population
@@ -108,6 +109,14 @@
 					3. Fitness score: The fitness score is measured when the Incubator is done growing the AI.
 					   It is bassically just the fitness of the final AI represented as a percentage of answers it
 					   got right when asked to classify data.
+					  
+			These are recorded in individual text files "fitness.txt", "confusion.txt" and, "score.txt" which can be
+			found can be found in "src\Experiment\results<#1>\<#2>\<#3>\" Where <#1> is the number of the round the 
+			results are for, <#2> the name of the data set, and <#3> is the incubator type.
+			
+			The format of these files is explained below.
+			
+			
 		
 		Observation notes:
 		------------------
