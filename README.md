@@ -134,18 +134,22 @@
 								
 								The numbers to the right are the expected answers to the left are the									AI's answers.
 								
-								ex:		
-																										AI answer	Excpected answer
+								ex:	
+									
+									AI answer	Excpected answer
 									---------       ----------------
 									   ||            ||
 									   \/            \/
+									   
 									    1     ,       3
 									    2     ,       2
 									    4     ,       4
 									    3     ,       1
 									    
 									    .
+									    
 									    .
+									    
 									    .
 									    
 									
