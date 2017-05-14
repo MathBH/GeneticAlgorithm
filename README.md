@@ -58,8 +58,56 @@
 			
 		What the experiment does:
 		-------------------------
-		
 			
+			The experiment is devided into 7 rounds, each with unique settings applied to the Incubators
+			so to test their performance in different circumstances.
+								
+					- Round 1 is the control round with standard settings.
+								
+					- Round 2 has a medium mutation rate. A mutation rate is a random modification that is
+					  applied to children AI. This is used to inject new properties into the next generation
+					  and avoid stagnation.
+									  
+					- Round 3 has a high mutation rate.
+									
+					- Round 4 needs to be prefaced with the fact that the AIs do their decision making through
+					  decision trees. Generation of random AIs abide by a leaf cap for these decision trees.
+					  Round 4 enforces a small limit of leaves on decision trees.
+									  
+					- Round 5 has a large leaf limit for decision trees.
+									
+					- Round 6 enforces a small AI population for each generation
+									
+					- Round 7 enforces a large AI population for each generation.
+								
+			At every experiment round, AIs are grown in the Standard Incubator and the Reroll Incubator
+			for 5 different data sets:
+								
+					1. Iris: Iris is the control in most respects, other than it is one of the smallest data sets.
+									
+					2. Iris Large: The same as Iris only with a lot of data.
+									
+					3. Glass: Glass is the same size as Iris, only its data has a lot of different attributes
+					   That the AI will have to keep track of.
+									
+					4&5. Spiral & Bimodal: These two data sets are very difficult for AIs to learn and are not
+					     included in the experiment with anticipation that the AI will succeed in learning
+					     them. They are only there to test their limits.
+										
+			For each data set, 3 performance attributes are recorded for each Incubator:
+								
+					1. Fitness over time: Fitness here can be understood as synonymous to "performance".
+					   Fitness over time is bassically measured as the 3 highest fitnesses in an AI population
+					   accross generations.
+									   
+					2. Confusion matrix: The confusion matrix is measured when the Incubator is done growing
+					   the AI. It gives the AI a set of questions and writes a "confusion matrix" which is
+					   essentially juxtaposition of the expected answer for each question and the answer the AI
+					   gave.
+									   
+					3. Fitness score: The fitness score is measured when the Incubator is done growing the AI.
+					   It is bassically just the fitness of the final AI represented as a percentage of answers it
+					   got right when asked to classify data.
 		
 		Observation notes:
 		------------------
