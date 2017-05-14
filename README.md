@@ -33,7 +33,6 @@
 			  
                       Standard Incubator:
                       -------------------
-		      
                                         The Standard Incubator grows the AI in standard Genetic Algorithm tradition.
 					That is to say, it first generates a population at random, it tests their
 					performance, intermixes the data of the two highest performing AIs and
