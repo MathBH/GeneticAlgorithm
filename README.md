@@ -50,8 +50,23 @@
 --------------------------------------------------------------------------------------------------------------------------------
 
       EXPERIMENT:
-      ----------
-				I have left the Experiment class so that those who are curious may witness the AI at work for themselves.
+      -----------
+      
+      		How to run:
+		-----------
+			To run the experiment, run the main method from the "Experiment" class in "src/Experiment/".
+			
+		What the experiment does:
+		-------------------------
+		
+			
+		
+		Observation notes:
+		------------------
+		
+			Here is a summary of what I have observed so far:
+      
+		I have left the Experiment class so that those who are curious may witness the AI at work for themselves.
 				Be advised that the experiment can take over an hour to complete. A FAQ is provided bellow explaining how to
 				run the experiment and what the output data means.
 				
