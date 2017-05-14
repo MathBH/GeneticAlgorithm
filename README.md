@@ -131,8 +131,10 @@
 				In each folder, there wil be 3 files "confusion.txt", "fitness.txt", "score.txt":
 					
 					- "confusion.txt" : 	This contains a column of comma seperated numbers. These numbers are 								   	representative of categories.
-																									The numbers to the right are the expected answers to the left are the									AI's answers.
-																									ex:		
+								
+								The numbers to the right are the expected answers to the left are the									AI's answers.
+								
+								ex:		
 																										AI answer	Excpected answer
 									---------       ----------------
 									   ||            ||
