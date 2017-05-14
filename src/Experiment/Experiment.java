@@ -12,6 +12,12 @@ import GA.*;
  *
  * This is the class that runs the whole experiment that will provide
  * data on the AI performance when grown from different incubators.
+ * 
+ * NOTE: Because System.out is being piped to file streams, System.err
+ *       was used to notify the user on experiment progress. This is
+ *       a TEMPORARY solution.
+ *       
+ * TODO: make progress notifications print somewhere other than System.err
  *
  */
 
@@ -74,7 +80,7 @@ public class Experiment {
 		evaluator.addObserver(new CEObserver());
 		scoreHandler.addObserver(new FloatScoreObserver());
 		
-		System.out.println("EXPERIMENT 1");
+		System.err.println("EXPERIMENT 1");
 		
 		results = RESULTS_1;
 		
@@ -84,7 +90,7 @@ public class Experiment {
 		runExperiment(64, 64, 1.0f, SPIRAL, 0.95f);
 		runExperiment(64, 64, 1.0f, GLASS, 0.95f);
 
-		System.out.println("EXPERIMENT 2");
+		System.err.println("EXPERIMENT 2");
 		
 		results = RESULTS_2;
 		
@@ -94,7 +100,7 @@ public class Experiment {
 		runExperiment(64, 64, 2.0f, SPIRAL, 0.95f);
 		runExperiment(64, 64, 2.0f, GLASS, 0.95f);
 
-		System.out.println("EXPERIMENT 3");
+		System.err.println("EXPERIMENT 3");
 		
 		results = RESULTS_3;
 		
@@ -104,7 +110,7 @@ public class Experiment {
 		runExperiment(64, 64, 5.0f, SPIRAL, 0.95f);
 		runExperiment(64, 64, 5.0f, GLASS, 0.95f);
 
-		System.out.println("EXPERIMENT 4");
+		System.err.println("EXPERIMENT 4");
 		
 		results = RESULTS_4;
 		
@@ -114,7 +120,7 @@ public class Experiment {
 		runExperiment(25, 64, 1.0f, SPIRAL, 0.95f);
 		runExperiment(25, 64, 1.0f, GLASS, 0.95f);
 
-		System.out.println("EXPERIMENT 5");
+		System.err.println("EXPERIMENT 5");
 		
 		results = RESULTS_5;
 		
@@ -124,7 +130,7 @@ public class Experiment {
 		runExperiment(128, 64, 1.0f, SPIRAL, 0.95f);
 		runExperiment(128, 64, 1.0f, GLASS, 0.95f);
 
-		System.out.println("EXPERIMENT 6");
+		System.err.println("EXPERIMENT 6");
 		
 		results = RESULTS_6;
 		
@@ -134,7 +140,7 @@ public class Experiment {
 		runExperiment(64, 10, 1.0f, SPIRAL, 0.95f);
 		runExperiment(64, 10, 1.0f, GLASS, 0.95f);
 
-		System.out.println("EXPERIMENT 7");
+		System.err.println("EXPERIMENT 7");
 		
 		results = RESULTS_7;
 		
@@ -150,11 +156,11 @@ public class Experiment {
 	 * @param fileFolder: name of the data to be experimented on
 	 */
 	private static void runExperiment(int leafCap, int populationSize, float mutationRate, String dataName, float treshold){
-		System.out.println("DATA SET: " + dataName);
+		System.err.println("DATA SET: " + dataName);
 		/**
 		 * pipe to basic incubator fitness over time file.
 		 */
-		System.out.println("FITNESS: SI");
+		System.err.println("FITNESS: SI");
 		pipeOutput(SRC + results + dataName + "/" + STANDARD_INCUBATOR + FITNESS_FILE);
 		
 		File trainingData = new File(SRC + dataName + "/" + TRAINING_DATA);
@@ -163,14 +169,14 @@ public class Experiment {
 		/**
 		 * pipe to reroll incubator fitness over time file.
 		 */
-		System.out.println("FITNESS: RI");
+		System.err.println("FITNESS: RI");
 		pipeOutput(SRC + results + dataName + "/" + REROLL_INCUBATOR + FITNESS_FILE);
 		Classifier rrclassifier = rerollIncubator.generateReasoningEngine(leafCap, populationSize, mutationRate, trainingData, treshold);
 		
 		/**
 		 * pipe to confusion matrix file for basic
 		 */
-		System.out.println("CONFUSION: SI");
+		System.err.println("CONFUSION: SI");
 		pipeOutput(SRC + results + dataName + "/" + STANDARD_INCUBATOR + CONFUSION_MATRIX);
 		
 		File testingData = new File(SRC + dataName + "/" + TESTING_DATA);
@@ -179,7 +185,7 @@ public class Experiment {
 		/**
 		 * pipe to confusion matrix file for reroll
 		 */
-		System.out.println("CONFUSION: RI");
+		System.err.println("CONFUSION: RI");
 		pipeOutput(SRC + results + dataName + "/" + REROLL_INCUBATOR + CONFUSION_MATRIX);
 		float rscore = evaluator.evaluate(rrclassifier, testingData);
 		
@@ -187,14 +193,14 @@ public class Experiment {
 		/**
 		 * pipe to score for basic
 		 */
-		System.out.println("SCORING: SI");
+		System.err.println("SCORING: SI");
 		pipeOutput(SRC + results + dataName + "/" + STANDARD_INCUBATOR + TEST_SCORE);
 		scoreHandler.score(bscore);
 
 		/**
 		 * pipe to score for reroll
 		 */
-		System.out.println("SCORING: RI");
+		System.err.println("SCORING: RI");
 		pipeOutput(SRC + results + dataName + "/" + REROLL_INCUBATOR + TEST_SCORE);
 		scoreHandler.score(rscore);
 	}
