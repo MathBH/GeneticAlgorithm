@@ -119,41 +119,35 @@
 			
 		Performance Files Format:
 		-------------------------
-		
-												Performance data is recorded in a set of files that can be found in
+				
+				Performance files are output when the experiment is run. They will be stored to:
+				
+					"src\Experiment\results<#1>\<#2>\<#3>\" 
+					
+				Where <#1> is the number of the round the results are for, <#2> the name of the data set it is for
+				("bimodal", "glass", "iris", "irisLarge", "spiral"), and <#3> is the incubator type ("basicIncubator",
+				"rerollIncubator").
+				
+				In each folder, there wil be 3 files "confusion.txt", "fitness.txt", "score.txt":
+					
+					- "confusion.txt" : 	This contains a column of comma seperated numbers. These numbers are 								   	representative of categories.
+																									The numbers to the right are the expected answers to the left are the									AI's answers.
+																									ex:		
+																										AI answer	Excpected answer
+									---------       ----------------
+									   ||            ||
+									   \/            \/
+									    1     ,       3
+									    2     ,       2
+									    4     ,       4
+									    3     ,       1
+									    
+									    .
+									    .
+									    .
+									    
 									
-											"src\Experiment\results<#1>\<#2>\<#3>\"
-											
-									Where <#1> is the number of the round the results are for.
-										  <#2> is "bimodal", "glass", "iris", "irisLarge", or "spiral" for what data set
-						                       the results are for.
-										  <#3> is "basicIncubator" or "rerollIncubator" for which incubator the results
-										       are for.
-											   
-									In this folder, there will be 3 files:
-									
-														- "confusion.txt" : This contains a column of comma seperated numbers. 
-																			These numbers are representative of categories.
-																			
-																			The numbers to the right are the expected answers
-																			to the left are the AI's answers.
-																			
-																			ex:		
-																					AI answer	Excpected answer
-																					---------   ----------------
-																					   ||			  ||
-																					   \/			  \/
-																					   
-																					    1     ,       3
-																						2     ,       2
-																						4     ,       4
-																						3     ,       1
-																						
-																						.
-																						.
-																						.
-																						
-														- "fitnes.txt" :	This contains a column of 4 comma seperated numbers.
+					- "fitnes.txt" :	This contains a column of 4 comma seperated numbers.
 																			The first is the generation number, the three others
 																			are the top 3 fitnesses in that given generation.
 																			
