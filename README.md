@@ -10,11 +10,11 @@
               
       OVERVIEW:
       --------
-              The following was written as part of a project to study the performance of a machine learning program.
-              This program is an AI that learns to classify objects in reference to numerical representations of their
+              The following was written as part of a project to study the performance of a machine learning program. This
+	      program is an AI that learns to classify objects in reference to numerical representations of their
 	      attributes. The code was written in reference to standard Genetic Algorithms.
-			  
-              Saying the AI "learns" in this case might not be the best metaphor. We might instead say that the AI is "grown"
+ 
+	      Saying the AI "learns" in this case might not be the best metaphor. We might instead say that the AI is "grown"
 	      in an Incubator.
 		  
 	      The way the AI is grown is by putting a list of examples of numerical values and what category the thing
