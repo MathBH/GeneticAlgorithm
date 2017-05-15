@@ -1,5 +1,5 @@
 # Genetic Algorithm for Classification                                                                         
-# by Mathieu Belzile-Ha
+### by Mathieu Belzile-Ha
 
       CONTENT:
       --------
